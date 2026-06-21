@@ -1,0 +1,135 @@
+{% extends "base/base.html" %}
+    {% block extra_head %} 
+        <link rel="stylesheet" href="/static/css/bl-slider.css">
+        <link rel="stylesheet" href="/static/css/carousel.css">
+    {% endblock extra_head %}
+
+    {% block header %}
+        {% set hdr = {"color" : "dark", "floating" : true}  %}
+        {% include "base/header.html" %}
+    {% endblock header %}
+
+    {% block hero %}
+        {% include "fragments/bl-slider.html"%}
+    {% endblock hero %}
+    {% block body %}
+    <section class="">
+        <div class="grid col-3 content g-3 px-3">
+
+            {% for item in why_us %}
+              {% set card = item %}
+              {% include 'fragments/cards/dark-card-1.html'%}
+            {% endfor %}
+        </div>
+    </section>
+    <section class="">
+        <div class="grid content px-3 col-2--right">
+            <div class="pr-6">
+                <div class="poster-img">
+    
+                </div>
+            </div>
+            <div class="">
+                <span class="small-text spacedish-text heavy-weight caps">ABOUT CRC Group</span>
+                <h3 class="semilarge-text heavy-weight lh-1">Expert Exterior Space Development</h3>
+                <p class="py-3 w-ch60 normal-text lh-2">We provide thermal regulation for your outside spaces so that you can enjoy them year round. Keep optimal lighting and temprature, while maximising value on your property.</p>
+                <div class="grid col-2 g-6 pt-3 align-end">
+                    <div class="">
+                        <div class="quicktabs-wrapper">
+                            <div class="tab-selectors flex justify-stretch full-width mb-3">
+                                <div class="tab-selector is-active fg-1 heavy-weight"
+                                    data-tab="0"
+                                    data-text="Our mission is to ensure that every customer is satisfied that they are making the most of their external spaces."
+                                    data-reasons="Project Pride|98% Happy Customers"
+                                 >
+                                    <button>Mission</button>
+                                </div>
+                                <div class="tab-selector fg-1 heavy-weight" 
+                                    data-tab="1"
+                                    data-text="Our vision is to be the most trusted  impactful extension specialists in the south east, known for transforming external spaces."
+                                    data-reasons="South East Coverage|24/7 Contact Support"  
+                                >
+                                    <button>Vision</button>
+                                </div>
+                                <div class="tab-selector fg-1 heavy-weight" 
+                                    data-tab="2"
+                                    data-text=""
+                                >
+                                    <button>Values</button>
+                                </div>
+                            </div>
+                            <div class="tab-detail-wrapper">
+                                <div class="tab-detail">
+                                    <p class="py-2 lh-2 smaller-text"></p>
+                                    <ul class="py-3">
+                                        <li class="flex g-2 align-center">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                            </svg>
+                                            <span class="smaller-text">Fully Certified</span></li>
+                                        <li class="flex g-2 align-center mt-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                                <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                            </svg>
+                                            <span class="smaller-text">2 Decades Experience</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div> 
+                        <a class="btn btn-primary btn-md py-3 mt-3 px-4">
+                            <span>
+                                Discover More
+                            </span>
+                             <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                    <div>
+                        <div class="label-img">
+
+                        </div>
+                        <p class="py-4 lh-2 smaller-text">Operating since 2002, we have the knowledge required for a variety of jobs.</p>
+                        <div class="flex align-center g-3">
+                            <span class="large-text heavier-weight lh-1">24</span>
+                            <span class="heavy-weight spacedish-text">Years of<br> Experience</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section--dark">
+        <div class="content text-center">
+            <span class="small-text spacedish-text  heavy-weight caps">OUR FEATURED WORKS</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">Our Project Excellence</h3>
+            <div class="flex g3 mx-auto align-center w-ch60 g-3 py-4">
+                <button class="btn btn-secondary white-text">All (8)</button><button class="btn btn-secondary">Conservatories</button><button class="btn btn-secondary">Garden Rooms</button>
+            </div>
+        </div>
+        {% include "fragments/card-carousel.html" %}
+    </section>
+    <section>
+        <div class="content text-center">
+            <span class="small-text spacedish-text  heavy-weight caps">COMPATIBLE VARIATIONS</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">We Convert Conservatories of All Shapes &amp; Sizes !</h3>
+        </div>
+        <div class="grid content col-4 g-3 mt-3 pt-3">
+            {% for item in con_shapes  %}
+                {% set card = item %}
+                {% include 'fragments/cards/light-card-long.html' %}
+            {% endfor %}
+        </div>
+
+    </section>
+      
+    {% endblock body %}
+
+    {% block extra_scripts %}
+        <script src="/static/js/bl-slider.js"></script>
+        <script src="/static/js/carousel.js"></script>
+        <script src="/static/js/quicktabs.js"></script>
+    {% endblock extra_scripts %}

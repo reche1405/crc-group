@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %} {{ page.title or "CRC Group" }}{% endblock title %}</title>
+    <meta name="description" content="{% block description %}  {{ page.description or "Welcome to CRC Group, your premium conservatory and garden room installers." }}{% endblock description %}">
+    <meta name="keywords" content="{% block keywords %}  {{ page.keywords or "CRC Group, conservatories, garden rooms, UK, conservatries in Easbourne, Conservatories in Hastings" }}{% endblock keywords %}">
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+    {% block extra_head %} {% endblock extra_head %}
+
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    {% block pre_header %} {% endblock pre_header %}
+    {% block header %} 
+    
+        {% include 'base/header.html' %}
+    {% endblock header %}
+    {% block hero %}{% endblock hero %}
+    {% block body %} {% endblock body%}
+    {% include 'base/footer.html' %}
+
+</body>
+<script src="/static/js/nav.js"></script>
+{% block extra_scripts %}
+
+{% endblock extra_scripts %}
+</html>

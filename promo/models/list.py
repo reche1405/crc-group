@@ -4,8 +4,8 @@ from .base_model import BaseModel
 
 class List(BaseModel):
     __tablename__ = "lisits"
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
     tag = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=True )
     items = db.relationship('ListItem', backref='list', lazy=True, cascade="all, delete-orphan")
 
     def __repr__(self):
@@ -29,14 +29,13 @@ class List(BaseModel):
 
     @classmethod
     def get_home(cls):
-        tags = ['why-rok', 'home-hero']
+        tags = ['why-rok', 'home-welcome']
         tag_list = cls.query.filter(cls.tag.in_(tags)).all()
         return {x.tag: x for x in tag_list}
 
 
 class ListItem(BaseModel):
     __tablename__ = 'listitems'
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
     order = db.Column(db.Integer, nullable=False)
     text = db.Column(db.String(255), nullable=False)
     subtext = db.Column(db.Text, nullable=True)

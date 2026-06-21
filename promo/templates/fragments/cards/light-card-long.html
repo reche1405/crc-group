@@ -1,0 +1,10 @@
+<div class="card card--light card--light-1 p-3">
+    <div class="card-icon my-5 mx-auto">
+        {% if card.svg %}
+          
+            {{card.svg|safe}}
+        {% endif %}
+    </div>
+    <h4>{{card.title or card.text or 'Lorem Ipsom Dolar'}}</h4>
+    <p class="smaller-text lh-2 py-3">{{card.text or card.description or 'An even longer lorem ipsum dolar amet' }}</p>
+</div>

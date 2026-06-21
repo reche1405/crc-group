@@ -1,6 +1,6 @@
-const menuToggle = document.getElementById('mobile-nav-toggle');
-const mobileNav = document.getElementById('mobile-nav')
-const menuClose = document.getElementById('mobile-nav-close');
+const menuToggle = document.getElementById('nav-drawer-toggle');
+const mobileNav = document.getElementById('nav-drawer')
+const menuClose = document.getElementById('nav-drawer-close');
 const SHOWN_STATE_CLASS = 'show';
 
 const toggleState = (event) => {

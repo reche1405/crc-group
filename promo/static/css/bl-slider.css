@@ -1,0 +1,194 @@
+.bl-slide-wrapper {
+            width: 100%;
+            height: 800px;
+            background-color: blue;
+            padding: 0;
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .bl-slide {
+            width: 100%;
+            height: 100%;
+            z-index: 1; /* Default lower z-index */
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: grid;
+            grid-template-rows: repeat(4, 1fr);
+            justify-items: stretch;
+            visibility: hidden; /* Hide non-active slides */
+            filter: blur(30px);
+            transition: filter .9s ease-out;
+        }
+
+        .bl-slide.slide__current {
+            visibility: visible;
+            z-index: 2;
+            filter: blur(0px);
+
+        }
+
+        .bl-slide.slide__incoming {
+            visibility: visible;
+            z-index: 3;
+            filter: blur(0px);
+        
+        }
+
+        .bl-slide-blind {
+            background-color: #000;
+            overflow: hidden;
+            position: relative;
+            clip-path: inset( 0 0 50% 0); /* Fixed to match incoming open flow */
+            opacity: 0;
+            transition: clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            transition-delay: var(--blind-delay, 0s);
+        }
+
+        /* Current state - fully open, no animation */
+        .bl-slide.slide__current .bl-slide-blind {
+            clip-path: inset(0 0 0 0);
+            opacity: 1;
+            transition: none;
+        }
+
+        /* Incoming active state - animating open */
+        .bl-slide.slide__incoming.is-active .bl-slide-blind {
+            clip-path: inset(0 0 0 0);
+            opacity: 1;
+        }
+
+        .bl-slide-image {
+            position: absolute;
+            width: 100%;
+            height: 400%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bl-slide-blind:nth-of-type(1) .bl-slide-image { top: 0%; }
+        .bl-slide-blind:nth-of-type(2) .bl-slide-image { top: -100%; }
+        .bl-slide-blind:nth-of-type(3) .bl-slide-image { top: -200%; }
+        .bl-slide-blind:nth-of-type(4) .bl-slide-image { top: -300%; }
+
+        .bl-slide-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(79, 79, 79, 1), rgba(0, 0, 0, 0));
+            z-index: 4; /* Ensure overlay is above slides */
+        }
+        .bl-slide-overlay-container {
+            max-width:1190px;
+            margin-inline:auto;
+            display:grid;
+            grid-template-columns: 1fr 1fr;
+            height:100%;
+            padding-bottom:2rem;
+
+        }
+        .bl-slide-content {
+            display:flex; 
+            flex-direction:column; 
+            height:100%;
+            justify-content:end;
+            overflow:clip;
+            color:#fff;
+            padding-bottom:8rem;
+        }
+        .bl-slide-content-item {
+            opacity:0;
+            transition:opacity .3s ease-out;
+        }
+        .bl-slide-actions {
+            width:100%; 
+            height:100%; 
+            display:grid; 
+
+        }
+        .bl-slide-selectors {
+            align-self:end; 
+            justify-self:end; 
+            background-color:rgba(40,40,40, 0.3);
+            border-radius:.75rem;
+            list-style: none;
+            padding:0; margin:0;
+            width:clamp(250px, 100%, 350px);
+            margin-bottom:3rem;
+            counter-reset: slides;
+            padding:.5rem;
+        }
+        .bl-slide-selector {
+            position:relative; 
+            padding-left:2rem;
+        }
+        .bl-slide-selector::before {
+            counter-increment: slides;
+            content: '0' counter(slides) '.';
+            position:absolute; 
+            left: 1rem;
+            top:1.4rem;
+            color: #bbb;
+            font-size:1.2rem;
+        }
+        .bl-slide-selector:not(:last-of-type) {
+            border-bottom: 1px solid rgba(200,200,200, 0.3);
+        }
+        .bl-slide-selector button {
+            background-color: transparent;
+            border:none;
+            padding:1.25rem;
+            color:#fff;
+            font-size:1.2rem;
+            text-align:left;
+
+        }
+        .bl-slide-title {
+            font-size:4.5rem;
+            max-width:19ch;
+            margin-top:0.5rem;
+            margin-bottom:0.5rem;
+            padding:0;
+            line-height: 1.2;
+           
+        }
+        .bl-slide-subtitle {
+            text-transform:uppercase; 
+            font-weight: bold; 
+            letter-spacing: 0.025rem;
+            opacity:0;
+            transform:translateY(-100%);
+            font-size:.9rem;
+            transition: opacity .5s .4s ease-in, transform .5s .4s ease-in;
+        }
+        .bl-clip-item {
+            opacity:0;
+            transform:translateX(50%);
+            clip-path:inset(0 100% 0 0);
+            transition: opacity .45s var(--transition-delay, .5s) ease-out, transform .45s var(--transition-delay, .5s) ease-out, clip-path .3s var(--transition-delay, .5s) ease-out;
+
+        }
+        .bl-slide-description {
+            max-width:70ch;
+            font-size:.8rem;
+            letter-spacing:0.025rem;
+            padding-block:2rem;
+        }
+        .bl-slide-content.is-active .bl-slide-content-item {
+            opacity:1;
+        }
+        .bl-slide-content.is-active .bl-clip-item {
+            opacity: 1; 
+            transform:translateX(0);
+            clip-path:inset(0 0 0 0);
+
+        }
+        .bl-slide-content.is-active .bl-slide-subtitle {
+            
+            opacity: 1; 
+            transform:translateY(0);
+        }

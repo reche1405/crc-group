@@ -15,6 +15,10 @@ class Page(BaseModel):
     title = db.Column(db.String(100), nullable=False)
     keywords = db.Column(db.String(255), nullable=True)
     description = db.Column(db.Text, nullable=True)
+    body_title = db.Column(db.String(255), nullable=True)
+    body_span = db.Column(db.String(255), nullable=True)
+    body_intro = db.Column(db.Text, nullable=True)
+
     hero_size = db.Column(db.Enum(HeroHeight, native_enum=False), default=HeroHeight.SM, nullable=False)
     hero_media_id = db.Column(db.Integer, db.ForeignKey("media.id"), nullable=True)
     hero_media = db.relationship('Media', backref="heroes")

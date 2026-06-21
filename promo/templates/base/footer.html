@@ -1,0 +1,66 @@
+<footer class="">
+    <div class="footer__content">
+        <div class="footer__section footer__section--left">
+            <img class="footer__logo" src="/static/img/logo.png" alt="CRC Group Logo">
+            <p class="footer__description py-3 smaller-text lh-2">CRC Group is a leading provider of high-quality conservatories and garden rooms in the UK. We specialize in creating beautiful, functional spaces that enhance your home and lifestyle.</p>
+            <p class="footer__contact py-3">Email us: <a href="mailto:contact@crc-group.co.uk">contact@crc-group.co.uk</a></p>
+            <p class="footer__contact py-3">Call us: <a href="tel:+441234567890">+44 1234 567 890</a></p>
+             <ul class="footer__socials">
+                {% for link in socials %}
+                <li>
+                    <a href="{{ link.page_uri }}" target="_blank" rel="noreferrer noopener" style="fill:#ffffff; stroke:#ffffff;">
+                        {{ link.icon|safe }}
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="footer__section footer__section--right">
+            <div class="grid col-3 g-5">
+                <div>
+                    <h4 class="average-text heavy-weight">Quick Links</h4>
+                    <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
+                    <ul class="footer__links normal-weight">
+                        <li class="py-2"><a class="normal-text  " href="/">Home</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/about">About Us</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/services">Services</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/projects">Projects</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/blog">Blog</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="average-text heavy-weight">Services</h4>
+                    <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
+                    <ul class="footer__links normal-weight">
+                        <li class="py-2"><a class="normal-text  " href="/services/conservatories">Conservatories</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/services/garden-rooms">Garden Rooms</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/services/installation">Installation Services</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/services/custom-designs">Custom Designs</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="average-text heavy-weight">Projects</h4>
+                    <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
+                    <ul class="footer__links normal-weight">
+                        <li class="py-2"><a class="normal-text  " href="/projects/residential">Residential Projects</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/projects/commercial">Commercial Projects</a></li>
+                        <li class="py-2"><a class="normal-text  " href="/projects/renovations">Renovation Projects</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__badges flex row g-5 justify-center align-center pt-3 full-width">
+                
+                <img src="/static/img/certification1.png" alt="Certification 1">
+                <img src="/static/img/certification2.png" alt="Certification 2">
+                <img src="/static/img/certification3.png" alt="Certification 3">
+            </div>
+        </div>
+    </div>
+    <div class="flex content full-width justify-between align-center py-2">
+        <div>
+            <a href="/privacy-policy">Privacy Policy</a> 
+            <a href="/terms-of-service">Terms of Service</a>
+        </div>
+        <p class="text-right">&copy; {{ current_year }} CRC Group. All rights reserved.</p>
+    </div>
+</footer>
