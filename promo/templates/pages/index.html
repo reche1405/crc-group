@@ -14,17 +14,17 @@
     {% endblock hero %}
     {% block body %}
     <section class="">
-        <div class="grid col-3 content g-3 px-3">
+        <div class="grid col-3 sm-col-1 content g-3 px-3">
 
-            {% for item in why_us %}
+            {% for item in welcome_cards %}
               {% set card = item %}
               {% include 'fragments/cards/dark-card-1.html'%}
             {% endfor %}
         </div>
     </section>
     <section class="">
-        <div class="grid content px-3 col-2--right">
-            <div class="pr-6">
+        <div class="grid content px-3 col-2--right md-col-1 sm-col-1">
+            <div class="pr-6 md-hide sm-hide">
                 <div class="poster-img">
     
                 </div>
@@ -33,9 +33,9 @@
                 <span class="small-text spacedish-text heavy-weight caps">ABOUT CRC Group</span>
                 <h3 class="semilarge-text heavy-weight lh-1">Expert Exterior Space Development</h3>
                 <p class="py-3 w-ch60 normal-text lh-2">We provide thermal regulation for your outside spaces so that you can enjoy them year round. Keep optimal lighting and temprature, while maximising value on your property.</p>
-                <div class="grid col-2 g-6 pt-3 align-end">
+                <div class="grid col-2 sm-col-1 g-6 pt-3 align-end">
                     <div class="">
-                        <div class="quicktabs-wrapper">
+                        <div class="quicktabs-wrapper light">
                             <div class="tab-selectors flex justify-stretch full-width mb-3">
                                 <div class="tab-selector is-active fg-1 heavy-weight"
                                     data-tab="0"
@@ -107,17 +107,104 @@
             <span class="small-text spacedish-text  heavy-weight caps">OUR FEATURED WORKS</span>
             <h3 class="semilarge-text mx-auto lh-1 heavy-weight">Our Project Excellence</h3>
             <div class="flex g3 mx-auto align-center w-ch60 g-3 py-4">
-                <button class="btn btn-secondary white-text">All (8)</button><button class="btn btn-secondary">Conservatories</button><button class="btn btn-secondary">Garden Rooms</button>
+                <button class=" btn btn-secondary justify-center text-center white-text">All (8)</button><button class=" btn btn-secondary justify-center text-center">Conservatories</button><button class=" btn btn-secondary justify-center text-center">Garden Rooms</button>
             </div>
         </div>
         {% include "fragments/card-carousel.html" %}
+    </section>
+    <section class="no-pad">
+        <div class="grid col-2 sm-col-1 align-end">
+            <div class="section--offwhite full-height grid align-end">
+
+                <div class="flex col justify-end align-stretch content-left py-6">
+                    
+                    <span class="text-left title-text heavy-weight pt-3 pb-1">STEEL TILES</span>
+                    <div class="grid col-2--left sm-col-1 g-2">
+    
+                        <p class="smaller-text ">High-quality steel tiles come as standard, and are made from lightweight steel in a choice of colours.</p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <div class="flex g-3 full-width  pr-3 py-6 mb-3">
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section--highlight">
+                <div class="flex col justify-end content-right py-6" >
+                    <span></span>
+                    <img style="max-width:200px" src="/static/img/envirotile-logo.png"/>
+                    <p class="heavy-weight lh-2 py-3" style="max-width:40ch">Smart sustainable roofing solutions  
+that protect homes and the planet</p>
+                    <span class="text-left title-text heavy-weight pt-3 pb-1">ENVIROTILE SLATE</span>
+                    <div class="grid col-2--left sm-col-1 g-2">
+    
+                     <p class="smaller-text ">Recycled polymer lightweight roof tile with an interlocking 
+                        system that makes your job easier.</p>
+                    </div>
+                    <div class="flex g-3 full-width  pr-3 py-6 mb-3">
+                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="tile-img"><img src="" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="section--grey full-height grid align-end">
+
+                <div class="flex col justify-end content-left py-6" >
+                    <span class="text-left title-text heavy-weight pt-3 pb-1">COMPOSITE SLATE TILES</span>
+                    <div class="grid col-2--left sm-col-1 g-2">
+
+                        <p class="smaller-text ">Made from a recyclable mix of limestone and 
+                            polypropylene, composite tiles offer traditional looks 
+                            without risk of shattering, fading, warping or cracking.
+                        </p>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <div class="flex flex-wrap g-3  pr-3 py-3">
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"><img src="" alt=""></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="section--dark full-height grid align-end">
+
+                <div class="flex col justify-end content-right py-6" >
+                   <span class="text-left title-text heavy-weight py-3">SLATESKIN GRP SHEET TILES</span>
+                    <div class="grid col-2--left sm-col-1 g-2">
+
+                    <p class="smaller-text ">
+                        The GRP sheet roof tile system that gives
+                        a traditional slate-effect in half the time
+                   </p>
+                   </div>
+                    <div class="flex g-3 full-width align-center  pr-3 pb-3 pt-6">
+                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="info">
+                            <p class="w-ch40 smaller-text">Please note: All our SlateSkin sheets come from pref-cut ready to-fit sheets</p>
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
     </section>
     <section>
         <div class="content text-center">
             <span class="small-text spacedish-text  heavy-weight caps">COMPATIBLE VARIATIONS</span>
             <h3 class="semilarge-text mx-auto lh-1 heavy-weight">We Convert Conservatories of All Shapes &amp; Sizes !</h3>
         </div>
-        <div class="grid content col-4 g-3 mt-3 pt-3">
+        <div class="grid col-6 md-col-3 sm-col-1 mt-3 pt-3">
             {% for item in con_shapes  %}
                 {% set card = item %}
                 {% include 'fragments/cards/light-card-long.html' %}

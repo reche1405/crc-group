@@ -1,5 +1,7 @@
+
 from promo.models import db
 from .base_model import BaseModel, SluggedModel
+from flask import current_app
 class Category(BaseModel):
     __tablename__ = "categories"
     title = db.Column(db.String(255), unique=True, nullable=False )
@@ -35,15 +37,11 @@ class Service(SluggedModel):
     @classmethod
     def get_home(cls):
         return cls.query.limit(4).all()
-    @classmethod
-    def get_all(cls):
-        return cls.query.all()
-    @classmethod
-    def get_by_slug(cls, slug):
-        service = cls.query.filter_by(slug=slug).first()
-        if not service:
-            return None
-        return service
+   
+    def get_absolute_url(self):
+        return f"{current_app['BASE_URL']}/services/{self.slug}"
+    
+
     
 
 

@@ -11,9 +11,13 @@ const qtabHandlePress = (e) => {
     }
     
     const data = quickTabExtract(target.closest('.tab-selector'));
+    const title = qtabDetails.querySelector('h3');
     const para = qtabDetails.querySelector('p');
     const list = qtabDetails.querySelector('ul');
     const spans = list.querySelectorAll('span');
+    if(title) {
+        title.innerText = target.innerText
+    }
     para.innerText = data.text;
     for (let i = 0; i < spans.length; i++) {
         spans[i].innerText = data.reasons[i];
@@ -24,7 +28,8 @@ const qtabHandlePress = (e) => {
 
 const quickTabExtract = (selector) => {
     const data = {};
-    console.log(selector.dataset.text);
+    const set = selector.dataset;
+    console.log(set);
     data.text = selector.dataset.text;
     data.reasons = selector.dataset.reasons.split('|');
     console.log(data);
@@ -46,3 +51,6 @@ for (let i = 0; i < qtabs.length; i++) {
     button.addEventListener('click', qtabHandlePress);
     
 }
+
+const firstQTab = qtabs[0].querySelector('button');
+firstQTab.click();

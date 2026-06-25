@@ -1,8 +1,11 @@
 <ul class="breadcrumbs flex align-center justify-center text-center g-5 white-text smaller-text heavy-weight">
     <li><a href="/">Home</a></li>
-    {% if page.tag == 'about' %}
+    {% if obj %}
+    <li><a href="{{obj.parent_page.link}}"> {{obj.parent_page.title}}</a></li>
+    <li><a> {{obj.title}}</a></li>
     
-    <li><a>About Us</a></li>
+    {% else %}
+    <li><a>{% if page %} {{page.body_title}}{% endif %}</a></li>
     {% endif %}
-
+    
 </ul>

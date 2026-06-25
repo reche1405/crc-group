@@ -192,3 +192,28 @@
             opacity: 1; 
             transform:translateY(0);
         }
+
+        @media(max-width:768px) {
+            .bl-slide-wrapper {
+                height:600px;
+            }
+            .bl-slide-overlay-container {
+                grid-template-columns: 1fr;
+                padding:.75rem;
+            }
+            .bl-slide-content {
+                align-items: center;
+            }
+            .bl-slide-title {
+                font-size:3.5rem;
+            }
+            .bl-slide-actions {
+                display:none;
+            }
+        }
+
+        @media(max-width:468px) {
+            .bl-slide-title {
+                font-size:2rem;
+            }
+        }

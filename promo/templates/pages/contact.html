@@ -1,0 +1,122 @@
+{% extends "base/base.html" %}
+
+
+    {% block header %}
+    {% set hdr = { 'color' : 'light', 'floating' : false } %}
+    {% include "base/header.html" %}
+    {% endblock header %}
+    {% block hero %}
+    <div class="hero hero-short">
+        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
+            {% include 'base/breadcrumbs.html' %}
+            <h1>{{page.body_title or 'Contact'}}</h1>
+            <div class="full-width">
+                <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
+            </div>
+            <p class="mx-auto w-ch50 smaller-text lh-2">{{ page.body_intro }}</p>
+        </div>
+    </div>
+    {% endblock hero %}
+    {% block body %}
+    <section>
+            <div class="content grid col-3 md-col-2 sm-col-1 g-6 sm-g-3">
+                
+                <main class="span-2">
+                    <div class="card card--light card--light-2 p-6 sm-p-3 br-2">
+                            <span class="small-text spaced-text heavy-weight caps">START YOUR JOUNEY</span>
+                            <h3 class="semilarge-text heavy-weight lh-1">Let's Talk!</h3>
+                            <form action="">
+                                <div class="grid col-2 sm-col-1 my-3 g-3">
+
+                                    <div class="form-control br-2">
+                                        <input class="p-3" type="text" name="" placeholder="Full Name*" id="">
+                                    </div>
+                                     <div class="form-control br-2">
+                                        <input class="p-3" type="text" name=""  placeholder="Email*" id="">
+                                    </div>
+                                </div>
+                                <div class="grid col-2 sm-col-1 my-3 g-3">
+                                    <div class="form-control my-3 br-2">
+                                            <input class="p-3" type="text" placeholder="Tel*" name="" id="">
+                                    </div>
+                                    <div class="form-control my-3 br-2">
+                                        <select name="" class="p-3" id="">
+                                            <option>Service* </option>
+                                            <option value="Roof Conversion">Roof Conversion</option>
+                                            <option value="Garden Room">Garden Room</option>
+                                            <option value="Interior Decorating">Interior Decorating</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-control my-3">
+                                    <textarea placeholder="Message*" rows="4"></textarea>
+                                </div>
+                                <div class="grid col-3 sm-col-1">
+                                    <button class="btn btn-primary p-3 heavy-weight justify-between">
+                                        <span>Enquire</span>
+                                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </button>
+                                </div>
+
+                           </form>
+                        </div>
+                </main>
+                <aside>
+                    <div class="card card--light card--light-2 px-3 py-5 br-2">
+                        <div class="flex align-center g-3">
+                            <div class="icon-block">
+
+                            </div>
+                            <div>
+
+                                <span class="block medium-text heavy-weight ">Email Support</span>
+                                <span>info@crc-group.co.uk</span>
+                            </div>
+                        </div>
+                        <div class="seperator seperator--light seperator--left my-5"></div>
+                         <div class="flex align-center g-3">
+                            <div class="icon-block">
+
+                            </div>
+                            <div>
+
+                                <span class="block medium-text heavy-weight ">Phone Support</span>
+                                <span>01234 567 890</span>
+                            </div>
+                        </div>
+                        <div class="seperator seperator--light seperator--left my-5"></div>
+                         <div class="flex align-center g-3">
+                            <div class="icon-block">
+
+                            </div>
+                            <div>
+
+                                <span class="block medium-text heavy-weight ">Office Visit</span>
+                                <span>123 Main St, Eastbourne, BN21 123</span>
+                            </div>
+                        </div>
+                        <div class="seperator seperator--light seperator--left my-5"></div>
+                         <div class="flex align-center g-3">
+
+                            <div class="icon-block">
+
+                            </div>
+                            <div>
+
+                                <span class="block medium-text heavy-weight ">Follow Us</span>
+                                <span>Connect on Social Media</span>
+                            </div>
+                        </div>
+                        <div class="flex g-3 pb-2 pt-5 justify-center align-center">
+                                    <a><img src="/static/svg/facebook.svg"></a>
+                                    <a><img src="/static/svg/instagram.svg"></a>
+                                    <a><img src="/static/svg/linkedin.svg"></a>
+
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    {% endblock body %}
