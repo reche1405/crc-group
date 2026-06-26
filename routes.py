@@ -47,7 +47,7 @@ def login():
     return render_template('admin/login.html', form=form)
 
 
-@main.route('//')
+@main.route('/')
 def home():
     page = {
         'tag' : 'home',
