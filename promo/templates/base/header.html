@@ -15,12 +15,17 @@
             </div>
 
             <ul class="px-3 py-3 desktop-nav-pages sm-hide md-hide">
-                <li><a class="nav-link {% if page and page.tag == 'home' %}nav-link--active{% endif %}" href="/">Home</a></li>
-                <li><a class="nav-link {% if page and page.tag == 'about' %}nav-link--active{% endif %}" href="/about">About Us</a></li>
-                <li><a class="nav-link {% if page and page.tag == 'services' %}nav-link--active{% endif %}" href="/services">Services</a></li>
-                <li><a class="nav-link {% if page and page.tag == 'projects'  %}nav-link--active{% endif %}" href="/projects">Projects</a></li>
-                <li><a class="nav-link {% if page and page.tag == 'blog' %}nav-link--active{% endif %}" href="/blog">Blog</a></li>
-                <li><a class="nav-link {% if page and page.tag == 'contact' %}nav-link--active{% endif %}" href="/contact">Contact</a></li>
+                <li><a class="nav-link 
+                        {% if page and page.tag == 'home' %}
+                            nav-link--active
+                        {% endif %}"
+                    href="{{url_for('main.home')}}"
+                    >Home</a></li>
+                <li><a class="nav-link {% if page and page.tag == 'about' %}nav-link--active{% endif %}" href="{{url_for('main.about')}}">About Us</a></li>
+                <li><a class="nav-link {% if page and page.tag == 'services' %}nav-link--active{% endif %}" href="{{url_for('main.service_list')}}">Services</a></li>
+                <li><a class="nav-link {% if page and page.tag == 'projects'  %}nav-link--active{% endif %}" href="{{url_for('main.project_list')}}">Projects</a></li>
+                <li><a class="nav-link {% if page and page.tag == 'blog' %}nav-link--active{% endif %}" href="{{url_for('main.article_list')}}">Blog</a></li>
+                <li><a class="nav-link {% if page and page.tag == 'contact' %}nav-link--active{% endif %}" href="{{url_for('main.contact')}}">Contact</a></li>
             </ul>
             <div class="flex align-center g-3">
                 <div>

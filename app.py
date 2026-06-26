@@ -9,14 +9,19 @@ from promo.extensions import mail, admin, login_manager
 load_dotenv()
 def create_app():
     from promo.admin.views import BaseSecureView, SecuredAdminIndexView, ProjectAdminView, MediaAdminView, ArticleAdminView, SlugifyAdminView
-    from promo.routes import main
+    from routes import main
 
+    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+    PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
     # 
-    app = Flask(__name__)
+    app = Flask(__name__,
+         template_folder=os.path.join(BASE_DIR, 'promo', 'templates'),
+        static_folder=os.path.join(BASE_DIR, 'promo', 'static'),
+        static_url_path='/static'
+                )
     app.cli.add_command(create_admin)
 
-    app.static_folder = 'static'
-    app.static_path = '/static'
+
     app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
 
     app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
@@ -38,8 +43,7 @@ def create_app():
     mail.init_app(app)
     admin.init_app(app, index_view=SecuredAdminIndexView())
     login_manager.init_app(app)
-    BASE_DIR = os.path.abspath(os.path.dirname(__file__))
-    PARENT_DIR = os.path.abspath(os.path.join(BASE_DIR, os.pardir))
+  
 
 
     UPLOAD_PATH = os.path.join(BASE_DIR, 'media')
