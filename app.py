@@ -49,7 +49,7 @@ def create_app():
     UPLOAD_PATH = os.path.join(BASE_DIR, 'media')
 
     app.config['UPLOAD_PATH'] = UPLOAD_PATH
-    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(PARENT_DIR, 'project.db')}"
+    app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'project.db')}"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
