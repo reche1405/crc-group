@@ -3,6 +3,10 @@
     {% block title %}{{project.title}} | CRC Group{% endblock title %}
     {% block description%} {{project.short_desc}} {% endblock description%}
     {% block keywords%} {{project.short_desc}} {% endblock keywords%}
+    {% block extra_head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fs-carousel.css') }}">
+    {% endblock extra_head %}
+
     {% block header %}
     {% set hdr = { 'color' : 'light', 'floating' : false } %}
     {% include "base/header.html" %}
@@ -26,17 +30,17 @@
             <div class="card card--dark card--dark-2 p-3 br-2">
                 <span class="average-text">Customer</span>
                 <div class="seperator seperator--light my-4"></div>
-                <span>Joan Pheonix</span>
+                <span>{{ project.customer_name or 'Joan Phoenix' }}</span>
             </div>
             <div class="card card--dark card--dark-2 p-3 br-2">
                 <span class="average-text">Location</span>
                 <div class="seperator seperator--light my-4"></div>
-                <span>Eastbourne</span>
+                <span>{% if project.location %}{{ project.location.title }}{% else %}{{'Eastbourne'}} {% endif %}</span>
             </div>
              <div class="card card--dark card--dark-2 p-3 br-2">
                 <span class="average-text">Service</span>
                 <div class="seperator seperator--light my-4"></div>
-                <span>Roof Conversion</span>
+                <span>{{ project.service.title }}</span>
             </div>
             <div class="card card--dark card--dark-2 p-3 br-2">
                 <span class="average-text">Rating</span>
@@ -56,7 +60,42 @@
                 <main class="span-2">
                         <div class="card card--light card--light-2 p-3 br-3">
                             <div class="post-img br-4">
+
+                                <!-- Start Carousel -->
+
+                                <div class="fs-gallery-frame">
+                                    <div class="fs-carousel landscape">
+                                        <div class="fs-carousel-track" id="carouselTrack">
+                                            <!-- Slides will be dynamically inserted here -->
+                                        </div>
+                                        <button class="fs-nav-arrow prev" id="prevBtn">◀</button>
+                                        <button class="fs-nav-arrow next" id="nextBtn">▶</button>
+                                        <div class="fs-carousel-overlay">
+                                            <button class="fs-carousel-play-pause" id="playPauseBtn">
+                                                <svg class="fs-play-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M8 5v14l11-7z"/>
+                                                </svg>
+                                                <svg class="fs-pause-icon" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                                <!-- End Carousel -->
+
                             </div>
+                            <div>
+
+                                        <div class="fs-gallery-selector__viewbox">
+                                            <div class="fs-gallery-selector__scrollbox" id="thumbnailContainer">
+                                                <!-- Thumbnails will be dynamically inserted here -->
+                                            </div>
+                                        </div>
+
+                                    </div>
                             <div class="px-2">
                                 <div class="flex g-2 py-4 align-center">
                                     <span> <span class="heavy-weight">{{project.location.title or 'Eastbourne'}}</span></span>
@@ -73,8 +112,18 @@
                             </div>
                         </div>
                 </main>
-                <aside>
+                <aside class="relative">
+                    {% if project.review %}
                     
+                    
+                    <div class="card card--light card--light-2 p-3 br-3 mt-3">
+                        <span class="display-block heavy-weight medium-text">Customer Review</span>
+                        <span class="smaller-text light-weight grey-text">{{ project.review.created_at.strftime('%d %B %Y') }}</span>
+                        <div class="seperator seperator--light my-4"></div>
+                        <p class="lh-2 smaller-text">{{ project.review.text }}</p>
+                    </div>
+
+                    {% endif %}
                     <div class="card card--light card--light-2 p-3 br-3 mt-3">
                         <span>Other Projects</span>
                         {% for project in other_projects %}
@@ -84,4 +133,12 @@
                 </aside>
             </div>
         </section>
+        
     {% endblock body %}
+
+    {% block extra_scripts %}
+    <script src="{{ url_for('static', filename='js/fs-carousel.js') }}"></script>
+    <script>
+    const fsCarousel = new FullScreenCarousel();
+    </script>
+    {% endblock extra_scripts %}

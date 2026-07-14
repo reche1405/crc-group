@@ -1,0 +1,13 @@
+<div class="hero hero-short">
+    {% set path = "/img/heros/" + hero_img %}
+    <img class="object-cover absolute full-width full-height" src="{{ url_for('static', filename=path) }}"/>
+    <div class="overlay"></div>
+    <div class="content relative flex col full-width full-height align-center text-center justify-center g-3 white-text z-3">
+        {% include 'base/breadcrumbs.html' %}
+        <h1 class="clip-item is-visible" style="--transition-delay:.3s">{% if page %} {{page.body_title}} {% elif obj %}{{obj.title}} {% else %} Page {% endif %}</h1>
+        <div class="full-width">
+            <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
+        </div>
+        <p class="mx-auto w-ch50 smaller-text lh-2 fade-up-item is-visible" style="--transition-delay:.5s; --transition-duration: .7s"> {% if page %} {{ page.body_intro }}  {% endif %} </p>
+    </div>
+</div>

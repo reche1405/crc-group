@@ -22,11 +22,17 @@ class BaseModel(db.Model):
 class SluggedModel(BaseModel):
     __abstract__ = True
     title = db.Column(db.String(255), nullable=False, unique=True)  
-
+    parent_route = db.Column(db.String(255), nullable=True, default='service_list')
+    parent_title = db.Column(db.String(255), nullable=True, default='Services')
+    url_prefix = None
     slug = db.Column(db.String(255), nullable=True)
 
     @classmethod
     def get_by_slug(cls, slug):
         return cls.query.filter_by(slug=slug).first()
+    
+    def get_absolute_url(self):
+        
+        return f"/{self.url_prefix}/{self.slug}/"
     
 

@@ -1,9 +1,15 @@
-<div class="card card--light card--light-2 py-5 px-3 br-3">
-    <div class="flex full-width g-3 align-center justify-center">
-        {{ card.svg }}
-        <span class="average-text heavy-weight  "> {{card.subtext}}</span>
-    </div>
-    <div class="text-center medium-text">
+<div class="card card--light card--light-2 pb-3 pt-2 px-3 br-2">
+    
+    <div class="flex full-width g-3 align-center justify-center ">
+        {% if card.svg %}
+        <div class="grey-text">
+            {{ card.svg|safe }}
+        </div>
+        {% endif %}
+
+            <span class="semilarge-text heavy-weight grey-text "> {{card.subtext}}</span>
+        </div>
+    <div class="text-center medium-text heavy-weight">
         <span class="text-center"> {{card.text or card.title }} </span>
     </div>
 </div>

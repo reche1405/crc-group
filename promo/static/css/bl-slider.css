@@ -160,6 +160,7 @@
             text-transform:uppercase; 
             font-weight: bold; 
             letter-spacing: 0.025rem;
+            text-align:left;
             opacity:0;
             transform:translateY(-100%);
             font-size:.9rem;
@@ -215,5 +216,8 @@
         @media(max-width:468px) {
             .bl-slide-title {
                 font-size:2rem;
+            }
+             .bl-slide-content {
+                align-items: start;
             }
         }

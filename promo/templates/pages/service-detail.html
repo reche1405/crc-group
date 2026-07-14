@@ -1,0 +1,132 @@
+{% extends "base/base.html" %}
+ {% block title %}{{service.title}} | CRC Group{% endblock title %}
+    {% block description%} {{service.short_desc}} {% endblock description%}
+    {% block keywords%} {{service.short_desc}} {% endblock keywords%}
+{% block header %}
+    {% set hdr = { 'color' : 'light', 'floating' : false } %}
+    {% include "base/header.html" %}
+{% endblock header %}
+
+{% block hero %}
+    <div class="hero hero-short hero-white">
+
+        <div class="grid content col-2--left sm-col-1 g-3 full-width full-height align-center">
+            <div >
+                <h1 class="title x-large-text">{{ service.title or 'Service Detail'}}</h1>
+            </div>
+            <div>
+                <p class="smaller-text lh-2">{{ service.short_desc }}</p>
+            </div>
+        </div>
+
+    </div>
+    <div class="hero hero-short">
+        <img src="{{ url_for('static', filename='img/heros/projects.jpg')}}" class="object-cover" alt="">
+    </div>
+{% endblock hero %}
+
+{% block body %}
+    <section class="no-pad">
+        <div class="grid col-2 sm-col-1">
+            <div class="section--offwhite">
+                {% set section_name = service.slug + "-faq" %}
+                {% set section = service.section(section_name) %}
+
+                <div class="content-left  pb-6">
+                    <h3 class="semilarge-text  mx-auto text-center py-4 my-2">{{ section.title if section else 'NO SECTION' }}</h3>
+                    {% set list_title = service.slug + "-faq-questions" %}
+                    {% set list = section.list_for(list_title) %}
+                    {% for item in list.items %}
+                    
+                        <details {% if loop.index0 == 0 %} open{% endif %}  name="faq">
+                            <summary> {{item.text}} </summary>
+                            {% set paras = item.subtext.split('\n') %}
+                            {% for para in paras %}
+                                <p class="py-2 lh-1 smaller-text text-left w-ch60"> {{ para|safe }} </p>
+                            {% endfor %}
+                        </details>
+                    {% endfor %}
+                    
+                </div>
+            </div>
+            <div class="flex align-end section--highlight" >
+                <div class="content-right pb-6 pt-4 mt-2">
+                    <h3 class="text-left grey-text average-text spacedish-text caps pb-3 pt-4">MORE DETAILS</h3>
+                    {% set desc_paras = service.desc.split('\n') %}
+                    {% for para in desc_paras %}
+                        <p class="normal-text lh-2 pb-4">
+                            {{ para }}
+                        </p>
+                        {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+    {% set section_name = service.slug + "-how" %}
+    {% set section = service.section(section_name) %}
+    {% if section %}
+    
+    <section class="section--offwhite overflow-clip">
+        <div class="content">
+            <h3 class="semilarge-text mx-auto text-center py-4 my-2">How it Works</h3>
+            <div class="mapped-img relative mt-4">
+                {% if section.media %}  
+                    <img  src="{{ section.media.get_absolute_url() }}"  alt="Render of {{ service.title }}">
+                
+                {% else %}   
+                    <img  src="{{ url_for('static', filename='img/placehold/roof-render.png')}}"  alt="Render of {{ service.title }}">
+                {% endif %}
+                {% set list_name = service.slug + "-render" %}
+                {% set list = section.list_for(list_name) %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" style="position: absolute; top: 0; left: 0;" viewBox="0 0 300 100" >
+                    {% for item in list.items %}
+                        {% set x,y = item.svg.split(',') %}
+                        <circle class="mapped-circle" data-text="{{ item.text }}" data-subtext="{{ item.subtext }}" cx="{{ x }}" cy="{{ y }}" stroke="#ffd82d" stroke-width=".05" fill="#ffd82d88" />
+                    {% endfor %}
+                   
+                </svg>
+            </div>
+            <div class="grid col-3 md-col-2 sm-col-1">
+                <div class=" mapped-info  card card--dark card--dark-1 p-4 br-2 mt-3">
+                    <h4>FULL GLAZING PANEL &amp; ROOF WINDOW OPTIONS</h4>
+
+                    <span>NOW AVAILABLE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <section class="no-pad">
+            <div class="grid col-3 md-col-2 full-width sm-col-1">
+                <div class="section--dark">
+                    <span class="average-text display-block heavy-weight mt-4 mb-2 px-5">See it in Action</span>
+                    <div class="py-3 px-5">
+                        <div class="seperator seperator--light"></div>
+                    </div>
+                    <p class="smaller-text p-5">Still not convinced? Take a look at some of our recent {{ service.title }} projects and you may just be inspired...</p>
+                    <div class="py-3 px-5">
+
+                        <a class="btn btn-highlight p-3 my-3 heavy-weight btn-md" href="{{ url_for('main.project_list') }}">All Projects</a>
+                    </div>
+                    </div>
+                {% for project in service.projects %}
+                <div class="px-5 py-3 section--grey flex col full-height full-width justify-end">
+                    <span class="medium-text heavy-weight display-block">{{ project.title }}</span>
+                    <p>{{ project.short_desc }}</p>
+                    <a class="btn btn-light p-3 btn-md my-3 heavy-weight" href="{{ url_for('main.project_detail', slug=project.slug) }}">View Project</a>
+                </div>
+                {% endfor %}
+                {% set extra_squares = 3 - (service.projects | length % 3) %}
+                {% for i in range(extra_squares) %}
+                <div class="p-5 section--offwhite">
+                </div>
+                {% endfor %}
+            </div>
+
+        </section>
+{% endblock body %}
+
+{% block extra_scripts %}
+<script src="{{ url_for('static', filename='js/img-map.js') }}"></script>
+{% endblock extra_scripts %}

@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+    {% block title %}{{article.title}} | CRC Group{% endblock title %}
+    {% block description%} {{article.abstract}} {% endblock description%}
+    {% block keywords%} CRC Blog, Construction Articles, Conservatories  {% endblock keywords%}
+    {% block header %}
+        {% set hdr = { 'color' : 'light', 'floating' : false } %}
+        {% include "base/header.html" %}
+    {% endblock header %}
+
+    {% block hero %}
+            <div class="hero hero-short hero-white">
+
+        <div class="grid content col-2--left sm-col-1 g-3 full-width full-height align-center">
+            <div >
+                <h1 class="title x-large-text lh-1">{{ article.title or 'Service Detail'}}</h1>
+            </div>
+            <div>
+                <p class="smaller-text lh-2">{{ article.abstract }}</p>
+                <div class="flex g-4 smaller-text spacedish text my-3">
+
+                    <span>{{article.author}} </span>
+                    <span>{{article.published_date.strftime("%d %b, %Y")  }} </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="hero hero-short">
+        <img src="{{ url_for('static', filename='img/heros/projects.jpg')}}" class="object-cover" alt="">
+    </div>
+    {% endblock hero%}
+
+    {% block body %}
+    <div class="blog-banner">
+        <span>{{article.author}}</span>
+    </div>
+    <div class="grid col-3 sm-col-1">
+
+        <div class="span-2">
+
+
+        </div>
+    </div>
+    {% endblock body %}

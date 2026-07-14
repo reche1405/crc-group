@@ -6,16 +6,8 @@
     {% include "base/header.html" %}
     {% endblock header %}
     {% block hero %}
-    <div class="hero hero-short">
-        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
-            {% include 'base/breadcrumbs.html' %}
-            <h1>{{page.body_title or 'Projects'}}</h1>
-            <div class="full-width">
-                <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
-            </div>
-            <p class="mx-auto w-ch50 smaller-text lh-2">{{ page.body_intro }}</p>
-        </div>
-    </div>
+     {% set hero_img = 'projects.jpg' %}
+    {% include "base/hero.html" %}
     {% endblock hero %}
     {% block body %}
     <section>
@@ -35,7 +27,7 @@
                         <p class="pt-2 pb-1">{{project.short_desc}}</p>
                     </div>
                     <div class="grid col-2 g-2 card-body pb-3 pl-3 pr-3"> 
-                        <a class="btn btn-transparent p-3 mt-3 justify-between" style href="">
+                        <a class="btn btn-transparent p-3 mt-3 justify-between" style href="{{project.get_absolute_url()}}">
                             <span>Explore</span>
                             <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

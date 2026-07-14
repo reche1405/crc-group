@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 from promo.admin.commands import create_admin
 from promo.models import db, migrate
-from promo.extensions import mail, admin, login_manager
+from promo.extensions import mail, admin, login_manager, cache
 
 load_dotenv()
 def create_app():
@@ -39,14 +39,18 @@ def create_app():
     app_env = os.environ.get('FLASK_ENV')
     if app_env is None:
         app_env = 'production'
+
+   
+    app.config['CACHE_TYPE'] = os.environ.get('CACHE_TYPE', 'SimpleCache')
+    app.config['CACHE_DEFAULT_TIMEOUT'] = int(os.environ.get('CACHE_DEFAULT_TIMEOUT', '300'))
     app.config['FLASK_ENV'] = app_env
     mail.init_app(app)
     admin.init_app(app, index_view=SecuredAdminIndexView())
     login_manager.init_app(app)
-  
+    cache.init_app(app)
 
 
-    UPLOAD_PATH = os.path.join(BASE_DIR, 'media')
+    UPLOAD_PATH = os.path.join(BASE_DIR, 'promo', 'media')
 
     app.config['UPLOAD_PATH'] = UPLOAD_PATH
     app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(BASE_DIR, 'project.db')}"
@@ -59,11 +63,12 @@ def create_app():
         from promo.models.media import Media
         from promo.models.user import User
         from promo.models.project import Project, Gallery, Slide
-        from promo.models.service import Service, Category
+        from promo.models.service import Service, Category, ServiceSection
         from promo.models.article import Article, BlogCategory
         from promo.models.page import HeroHeight, Page,Section
         from promo.models.list import List, ListItem
         from promo.models.area import Area, Location
+        from promo.models.review import Review
 
 
 
@@ -74,8 +79,10 @@ def create_app():
         admin.add_view(ProjectAdminView(Project, db, category='Projects'))
         admin.add_view(BaseSecureView(Gallery, db, category='Projects'))
         admin.add_view(BaseSecureView(Slide, db, category='Projects'))
+        admin.add_view(BaseSecureView(Review, db, category='Projects'))
         admin.add_view(BaseSecureView(Category, db, category='Services' ))
         admin.add_view(SlugifyAdminView(Service, db, category='Services'))
+        admin.add_view(BaseSecureView(ServiceSection, db, category='Services'))
         admin.add_view(BaseSecureView(Page, db, category='Static'))
         admin.add_view(BaseSecureView(Section, db, category='Static'))
         admin.add_view(BaseSecureView(List, db, category='Static'))

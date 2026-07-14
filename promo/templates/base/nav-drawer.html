@@ -1,13 +1,19 @@
 <div id="nav-drawer" class="nav-drawer md-show hide no-display hide" aria-label="Main Navigation" hidden>
     
-    <div class="menu__body">
-        <div class="flex full-width justify-end pr-3">
+    <div class="flex full-width justify-end pr-3">
             <div>
                 <button id="nav-drawer-close" class="" aria-label="Close main menu">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgb(42,42,42)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
                 </button>
             </div>
         </div>
+    <div class="nav-drawer__logo my-4 flex align-center justify-center">
+        <a href="{{url_for('main.home')}}">
+            <svg width="200px"  viewBox="0 0 95.514584 27.516664" version="1.1" id="svg1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><defs id="defs1" /><g id="layer1" transform="translate(-9.0980042,-18.845866)"><path d="m 28.239089,21.063021 -14.834235,14.834752 -1.697571,1.697054 3.394625,3.394625 1.697054,-1.697054 11.440127,-11.440128 12.525334,12.524817 3.395141,-3.395142 z" style="fill:#fbd902;stroke-linecap:square;paint-order:stroke markers fill" id="path9" /><path style="color:#000000;fill:#787666;stroke-linecap:square;-inkscape-stroke:none;paint-order:stroke markers fill" d="m 28.254805,29.549756 3.84961,3.847657 2.583984,2.583984 -1.992187,1.992188 -2.582032,-2.583985 -1.859375,-1.857422 -6.490495,6.492449 -0.996094,0.996093 -1.992187,-1.992187 0.996094,-0.996094 z" id="path2" /><path style="font-weight:bold;font-size:23.8125px;line-height:1.5;font-family:Poppins;-inkscape-font-specification:'Poppins Bold';letter-spacing:0.119062px;word-spacing:0.264583px;fill:currentColor;stroke:#787666;stroke-width:0.185208;stroke-linecap:square;paint-order:stroke markers fill" d="m 47.072846,32.224125 q 0,-2.4765 1.071562,-4.405313 1.071563,-1.952625 2.976563,-3.024187 1.928812,-1.095375 4.357687,-1.095375 2.976563,0 5.095875,1.571625 2.119313,1.571625 2.833688,4.28625 h -4.47675 q -0.500063,-1.04775 -1.42875,-1.595438 -0.904875,-0.547687 -2.071688,-0.547687 -1.881187,0 -3.048,1.309687 -1.166812,1.309688 -1.166812,3.500438 0,2.19075 1.166812,3.500437 1.166813,1.309688 3.048,1.309688 1.166813,0 2.071688,-0.547688 0.928687,-0.547687 1.42875,-1.595437 h 4.47675 q -0.714375,2.714625 -2.833688,4.28625 -2.119312,1.547812 -5.095875,1.547812 -2.428875,0 -4.357687,-1.071562 -1.905,-1.095375 -2.976563,-3.024188 -1.071562,-1.928812 -1.071562,-4.405312 z m 27.479603,8.382 -3.476625,-6.310313 h -0.976313 v 6.310313 h -4.071937 v -16.716375 h 6.834187 q 1.976438,0 3.357563,0.690562 1.404937,0.690563 2.0955,1.905 0.690562,1.190625 0.690562,2.667 0,1.666875 -0.9525,2.976563 -0.928687,1.309687 -2.76225,1.857375 l 3.857625,6.619875 z m -4.452938,-9.191625 h 2.524125 q 1.119188,0 1.666875,-0.547688 0.5715,-0.547687 0.5715,-1.547812 0,-0.9525 -0.5715,-1.500188 -0.547687,-0.547687 -1.666875,-0.547687 h -2.524125 z m 10.882324,0.809625 q 0,-2.4765 1.071562,-4.405313 1.071563,-1.952625 2.976563,-3.024187 1.928812,-1.095375 4.357687,-1.095375 2.976563,0 5.095875,1.571625 2.119313,1.571625 2.833688,4.28625 h -4.47675 q -0.500063,-1.04775 -1.42875,-1.595438 -0.904875,-0.547687 -2.071688,-0.547687 -1.881187,0 -3.048,1.309687 -1.166812,1.309688 -1.166812,3.500438 0,2.19075 1.166812,3.500437 1.166813,1.309688 3.048,1.309688 1.166813,0 2.071688,-0.547688 0.928687,-0.547687 1.42875,-1.595437 h 4.47675 q -0.714375,2.714625 -2.833688,4.28625 -2.119312,1.547812 -5.095875,1.547812 -2.428875,0 -4.357687,-1.071562 -1.905,-1.095375 -2.976563,-3.024188 -1.071562,-1.928812 -1.071562,-4.405312 z" id="text9" aria-label="CRC" /><path id="path24" style="fill:#fbd902;stroke:#787666;stroke-width:0.0353782;stroke-linecap:square;paint-order:stroke markers fill" d="m 102.91486,38.137352 a 1.8620234,1.8620234 0 0 1 -1.86203,1.862023 1.8620234,1.8620234 0 0 1 -1.86202,-1.862023 1.8620234,1.8620234 0 0 1 1.86202,-1.862023 1.8620234,1.8620234 0 0 1 1.86203,1.862023 z" /></g></svg>
+        </a>
+    </div>
+    <div class="menu__body">
+        
         {# <img class="nav-logo pt-6 inline-auto" src="/static/img/logo.png" alt="Logo"> #}
         <ul class="px-3 py-3">
             <li><a class="nav-link {% if page and page.tag == 'home' %}nav-link--active{% endif %}" href="{{url_for('main.home')}}">Home</a></li>
@@ -28,3 +34,4 @@
         
     </div>
 </div>
+<div class="underlay" id="nav-drawer-underlay" aria-hidden="true"></div>

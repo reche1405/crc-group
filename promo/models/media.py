@@ -18,7 +18,7 @@ class Media(BaseModel):
         return self.title   
 
     def upload_to():
-        return "media"
+        return "promo/media"
     
     def get_absolute_url(self):
         return BASE_URL + '/' + self.relative_path

@@ -1,5 +1,6 @@
 from promo.models import db
 from promo.models.base_model import BaseModel
+from promo.models.section import BaseSection
 from enum import Enum
 
 class HeroHeight(Enum):
@@ -32,16 +33,12 @@ class Page(BaseModel):
         return next((s for s in self.sections if s.tag == tag), None)
 
 
-class Section(BaseModel):
+class Section(BaseSection):
     __tablename__ = "sections"
     page_id = db.Column(db.Integer, db.ForeignKey("pages.id"), nullable=False)
     page = db.relationship('Page', backref="sections")
-    title = db.Column(db.String(200), nullable=True)
-    subtitle = db.Column(db.String(200), nullable=True)
-    text = db.Column(db.Text, nullable=True)
-    cta_link = db.Column(db.String(255), nullable=True)
-    tag = db.Column(db.String(100), nullable=False)
-
+    media_id = db.Column(db.Integer, db.ForeignKey('media.id'), nullable=True)
+    media = db.relationship('Media', backref='sections')
     
 
 

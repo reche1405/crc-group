@@ -10,10 +10,14 @@ class ProjectTag(enum.Enum):
   
     CRC = 'Roof Conversion'
     GRM = 'Garden Room'
+    INT = 'Interior Design'
 
 class Project(SluggedModel):
     __tablename__ = 'projects'
+    url_prefix = 'projects'
     
+    parent_route = db.Column(db.String(255), nullable=False, default='project_list')
+    parent_title = db.Column(db.String(255), nullable=False, default='Our Work')
     desc = db.Column(db.Text, nullable=True) 
     short_desc = db.Column(db.String(500), nullable=False)
     is_featured = db.Column(db.Boolean, nullable=False)  
@@ -23,7 +27,7 @@ class Project(SluggedModel):
     location = db.relationship('Location', backref=db.backref('projects', lazy=True))
     service_id = db.Column(db.Integer, db.ForeignKey('services.id'), nullable=True)
     service = db.relationship('Service',  backref=db.backref('projects', lazy=True))
-
+    customer_name = db.Column(db.String(100), nullable=True)
     featured_media_id = db.Column(db.Integer,  db.ForeignKey('media.id'), nullable=True)
     featured_media = db.relationship('Media', backref=db.backref('featured_project_images', lazy=True))
 
@@ -33,7 +37,7 @@ class Project(SluggedModel):
     @classmethod
     def get_featured(cls):
         """Returns only projects marked as featured."""
-        return cls.query.filter_by(featured=True).all()
+        return cls.query.filter_by(is_featured=True).all()
     
     @classmethod
     def get_page(cls, page, items_per_page):

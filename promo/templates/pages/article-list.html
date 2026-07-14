@@ -7,7 +7,9 @@
     {% endblock header %}
     {% block hero %}
     <div class="hero hero-short">
-        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
+        <img class="object-cover absolute full-width full-height" src="{{ url_for('static', filename='img/slides/blog-banner.jpg')}}"/>
+        <div class="overlay"></div>
+        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text relative z-3">
             {% include 'base/breadcrumbs.html' %}
             <h1>{{page.body_title}}</h1>
             <div class="full-width">
@@ -22,7 +24,7 @@
             <div class="content grid col-3 md-col-2 sm-col-1 g-4 sm-g-3">
                 <main class="span-2">
                     {% for article in articles %}
-                        <div class="card card--light card--light-2 p-3 br-3">
+                        <div class="card card--light card--light-2 p-3 br-3 mb-3">
                             <div class="post-img br-4">
                             </div>
                             <div class="px-2">
@@ -35,7 +37,7 @@
                                 <span class="title-text heavy-weight">{{article.title}}</span>
                                 <p class="py-3">{{article.abstract}}</p>
                                 <div class="grid col-4 sm-col-2 g-2 pb-3 pr-3"> 
-                                    <a class="btn btn-transparent pt-3 pb-3 mt-3 justify-between" style href="">
+                                    <a class="btn btn-transparent pt-3 pb-3 mt-3 justify-between" style href="{{article.get_absolute_url()}}">
                                         <span class="heavy-weight medium-text">Read</span>
                                         <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

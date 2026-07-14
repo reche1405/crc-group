@@ -1,5 +1,6 @@
 from promo.models import db
 from promo.models.base_model import BaseModel, SluggedModel
+from datetime import datetime
 article_media = db.Table(
     'article_media',
     db.Column('article_id', db.Integer, db.ForeignKey('articles.id'), primary_key=True),
@@ -12,7 +13,9 @@ class BlogCategory(BaseModel):
 
 class Article(SluggedModel):
     __tablename__ = 'articles'
-   
+    url_prefix = 'blog'
+    parent_route = db.Column(db.String(255), nullable=False, default='article_list')
+    parent_title = db.Column(db.String(255), nullable=False, default='Our Blog')
     subtitle = db.Column(db.String(255), nullable=True)
     abstract = db.Column(db.Text, nullable=False)
     body_one = db.Column(db.Text, nullable=False)
@@ -48,12 +51,13 @@ class Article(SluggedModel):
     
     @classmethod
     def get_page(cls, page, items_per_page):
+        today = datetime.now().date()
         if page is None or page < 1:
             page = 1
         if items_per_page is None or items_per_page < 1:
             items_per_page = 10
         offset = (page - 1) * items_per_page
-        return cls.query.order_by(cls.id).offset(offset).limit(items_per_page).all()
+        return cls.query.order_by(cls.id).filter_by(published=True).filter(cls.published_date <= today).offset(offset).limit(items_per_page).all()
     
     @classmethod
     def get_by_slug(cls, slug):

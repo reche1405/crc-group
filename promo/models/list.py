@@ -3,11 +3,16 @@ from sqlalchemy.orm.exc import NoResultFound, MultipleResultsFound
 from .base_model import BaseModel
 
 class List(BaseModel):
-    __tablename__ = "lisits"
+    __tablename__ = "lists"
     tag = db.Column(db.String(255), nullable=False)
     description = db.Column(db.Text, nullable=True )
+    title = db.Column(db.String(255), nullable=True)
     items = db.relationship('ListItem', backref='list', lazy=True, cascade="all, delete-orphan")
-
+    section_id = db.Column(db.Integer, db.ForeignKey('sections.id'), nullable=True)
+    section = db.relationship('Section', backref='lists')
+    service_section_id = db.Column(db.Integer, db.ForeignKey('servicesections.id'), nullable=True)
+    service_section = db.relationship('ServiceSection', backref='lists')
+    
     def __repr__(self):
         return self.tag
 
@@ -40,4 +45,6 @@ class ListItem(BaseModel):
     text = db.Column(db.String(255), nullable=False)
     subtext = db.Column(db.Text, nullable=True)
     svg = db.Column(db.Text, nullable=True)
-    list_id = db.Column(db.Integer, db.ForeignKey('lisits.id'), nullable=False)
+    media_id = db.Column(db.Integer,  db.ForeignKey('media.id'), nullable=True)
+    media = db.relationship('Media', backref=db.backref('list_items', lazy=True))
+    list_id = db.Column(db.Integer, db.ForeignKey('lists.id'), nullable=False)

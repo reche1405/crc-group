@@ -6,16 +6,8 @@
     {% include "base/header.html" %}
     {% endblock header %}
     {% block hero %}
-    <div class="hero hero-short">
-        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
-            {% include 'base/breadcrumbs.html' %}
-            <h1>{{page.body_title or 'Contact'}}</h1>
-            <div class="full-width">
-                <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
-            </div>
-            <p class="mx-auto w-ch50 smaller-text lh-2">{{ page.body_intro }}</p>
-        </div>
-    </div>
+     {% set hero_img = 'contact.jpg' %}
+    {% include "base/hero.html" %}
     {% endblock hero %}
     {% block body %}
     <section>

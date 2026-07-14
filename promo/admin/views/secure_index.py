@@ -6,5 +6,6 @@ class SecuredAdminIndexView(AdminIndexView):
     @expose('/')
     def index(self):
         if not current_user.is_authenticated:
-            return redirect(url_for('core.login', next=request.url))
+            return redirect(url_for('main.login', next=request.url))
+        
         return super(SecuredAdminIndexView, self).index()

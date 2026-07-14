@@ -4,6 +4,7 @@
         <link rel="stylesheet" href="/static/css/carousel.css">
     {% endblock extra_head %}
 
+    
     {% block header %}
         {% set hdr = {"color" : "dark", "floating" : true}  %}
         {% include "base/header.html" %}
@@ -14,61 +15,56 @@
     {% endblock hero %}
     {% block body %}
     <section class="">
+        {% set section=page.section('welcome-section') %}
         <div class="grid col-3 sm-col-1 content g-3 px-3">
-
-            {% for item in welcome_cards %}
+            {% set welcome_cards = section.list_for('welcome-cards')%}
+            {% for item in welcome_cards.items %}
               {% set card = item %}
               {% include 'fragments/cards/dark-card-1.html'%}
             {% endfor %}
         </div>
     </section>
     <section class="">
+        {% set section=page.section("home-about") %}
         <div class="grid content px-3 col-2--right md-col-1 sm-col-1">
             <div class="pr-6 md-hide sm-hide">
                 <div class="poster-img">
-    
+                    <img class="object-cover" src="{{ url_for('static', filename='img/placehold/0.jpg') }}" alt="{{section.title}}">
                 </div>
             </div>
             <div class="">
-                <span class="small-text spacedish-text heavy-weight caps">ABOUT CRC Group</span>
-                <h3 class="semilarge-text heavy-weight lh-1">Expert Exterior Space Development</h3>
-                <p class="py-3 w-ch60 normal-text lh-2">We provide thermal regulation for your outside spaces so that you can enjoy them year round. Keep optimal lighting and temprature, while maximising value on your property.</p>
+                <span class="small-text spacedish-text heavy-weight caps">{{section.subtitle}}</span>
+                <h3 class="semilarge-text heavy-weight lh-1">{{section.title}}</h3>
+                <p class="py-3 w-ch60 normal-text lh-2">{{section.text}}</p>
                 <div class="grid col-2 sm-col-1 g-6 pt-3 align-end">
                     <div class="">
                         <div class="quicktabs-wrapper light">
+                            {% set mission = section.list_for('home-mission') %}
+                            {% set vision = section.list_for('home-vision') %}
+                            {% set values = section.list_for('home-values') %}
+                            {% set section_lists = [mission, vision, values]%}
                             <div class="tab-selectors flex justify-stretch full-width mb-3">
+                                {% for list in section_lists %}
                                 <div class="tab-selector is-active fg-1 heavy-weight"
-                                    data-tab="0"
-                                    data-text="Our mission is to ensure that every customer is satisfied that they are making the most of their external spaces."
-                                    data-reasons="Project Pride|98% Happy Customers"
-                                 >
-                                    <button>Mission</button>
-                                </div>
-                                <div class="tab-selector fg-1 heavy-weight" 
-                                    data-tab="1"
-                                    data-text="Our vision is to be the most trusted  impactful extension specialists in the south east, known for transforming external spaces."
-                                    data-reasons="South East Coverage|24/7 Contact Support"  
+                                    data-tab="{{loop.index0}}"
+                                    data-text="{{list.description}}"
+                                    data-reasons="{% for item in list.items %}{{item.text}}|{% endfor %}"
                                 >
-                                    <button>Vision</button>
+                                    <button>{{list.title}}</button>
                                 </div>
-                                <div class="tab-selector fg-1 heavy-weight" 
-                                    data-tab="2"
-                                    data-text=""
-                                >
-                                    <button>Values</button>
-                                </div>
+                                {% endfor %}
                             </div>
                             <div class="tab-detail-wrapper">
                                 <div class="tab-detail">
-                                    <p class="py-2 lh-2 smaller-text"></p>
+                                    <p class="py-1 lh-2 smaller-text"></p>
                                     <ul class="py-3">
-                                        <li class="flex g-2 align-center">
+                                        <li class="flex g-2 align-center my-2 ">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                                 <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
                                             </svg>
                                             <span class="smaller-text">Fully Certified</span></li>
-                                        <li class="flex g-2 align-center mt-2">
+                                        <li class="flex g-2 align-center my-2">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
                                                 <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
@@ -78,7 +74,7 @@
                                 </div>
                             </div>
                         </div> 
-                        <a class="btn btn-primary btn-md py-3 mt-3 px-4">
+                        <a href="{{url_for('main.about')}}" class="btn btn-primary btn-md py-3 mt-2 px-4">
                             <span>
                                 Discover More
                             </span>
@@ -89,6 +85,7 @@
                     </div>
                     <div>
                         <div class="label-img">
+                        <img class="object-cover" src="{{ url_for('static', filename='img/placehold/2.jpg') }}" alt="{{section.title}}">
 
                         </div>
                         <p class="py-4 lh-2 smaller-text">Operating since 2002, we have the knowledge required for a variety of jobs.</p>
@@ -103,11 +100,14 @@
         </div>
     </section>
     <section class="section--dark">
+        {% set section=page.section('home-featured-projects') %}
         <div class="content text-center">
-            <span class="small-text spacedish-text  heavy-weight caps">OUR FEATURED WORKS</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">Our Project Excellence</h3>
-            <div class="flex g3 mx-auto align-center w-ch60 g-3 py-4">
-                <button class=" btn btn-secondary justify-center text-center white-text">All (8)</button><button class=" btn btn-secondary justify-center text-center">Conservatories</button><button class=" btn btn-secondary justify-center text-center">Garden Rooms</button>
+            <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title }}</h3>
+            <div class="full-width overflow-x-auto py-4">
+                <div class="flex g3 align-center g-3 py-4 justify-center sm-justify-start">
+                    <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All (8)</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Conservatories</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
+                </div>
             </div>
         </div>
         {% include "fragments/card-carousel.html" %}
@@ -125,11 +125,21 @@
                     </div>
                     <div class="overflow-x-auto">
                         <div class="flex g-3 full-width  pr-3 py-6 mb-3">
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img"> 
+                                <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/charcoal.jpg') }}" />
+                            </div>
+                            <div class="tile-img"> 
+                                <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/antique-red.jpg') }}" />
+                            </div>
+                            <div class="tile-img"> 
+                                <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/burnt-umber.jpg') }}" />
+                            </div>
+                            <div class="tile-img"> 
+                                <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/moss-green.jpg') }}" />
+                            </div>
+                            <div class="tile-img"> 
+                                <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/ebony.jpg') }}" />
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,10 +157,18 @@ that protect homes and the planet</p>
                         system that makes your job easier.</p>
                     </div>
                     <div class="flex g-3 full-width  pr-3 py-6 mb-3">
-                        <div class="tile-img"><img src="" alt=""></div>
-                        <div class="tile-img"><img src="" alt=""></div>
-                        <div class="tile-img"><img src="" alt=""></div>
-                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="tile-img">
+                            <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/terracotta.jpg') }}" class="object-cover" alt="Teracotta Envirotile" title="Terracotta">
+                        </div>
+                        <div class="tile-img">
+                            <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/dark-brown.jpg') }}" class="object-cover" alt="Dark Brown Envirotile" title="Dark Brown">
+                        </div>
+                        <div class="tile-img">
+                            <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/slate-grey.jpg') }}" class="object-cover" alt="Slate Grey Envirotile" title="Slate Grey">
+                        </div>
+                        <div class="tile-img">
+                            <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/anthracite-grey.jpg') }}" class="object-cover" alt="Anthracite Grey Envirotile" title="Anthracite Grey">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -167,12 +185,28 @@ that protect homes and the planet</p>
                     </div>
                     <div class="overflow-x-auto">
                         <div class="flex flex-wrap g-3  pr-3 py-3">
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
-                            <div class="tile-img"><img src="" alt=""></div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/brick-red.jpg') }}" class="object-cover" alt="Brick Red Composite Tile" title="Brick Red">
+                            </div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/pewter-grey.jpg') }}" class="object-cover" alt="Pewter Grey Composite Tile" title="Pewter Grey">
+                            </div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/stone-black.jpg') }}" class="object-cover" alt="Stone Black Composite Tile" title="Stone Black">
+
+                            </div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/chestnut.jpg') }}" class="object-cover" alt="Chestnut Composite Tile" title="Chestnut">
+
+                            </div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/plum.jpg') }}" class="object-cover" alt="Plum Composite Tile " title="Plum">
+
+                            </div>
+                            <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/red-rock.jpg') }}" class="object-cover" alt="Red Rock Composite Tile" title="Red Rock">
+
+                            </div>
                         </div>
 
                     </div>
@@ -190,7 +224,9 @@ that protect homes and the planet</p>
                    </p>
                    </div>
                     <div class="flex g-3 full-width align-center  pr-3 pb-3 pt-6">
-                        <div class="tile-img"><img src="" alt=""></div>
+                        <div class="tile-img">
+                                <img loading="lazy" src="{{ url_for('static', filename='img/tiles/slateskin/slate-grey.jpg') }}" class="object-cover" alt="">
+                        </div>
                         <div class="info">
                             <p class="w-ch40 smaller-text">Please note: All our SlateSkin sheets come from pref-cut ready to-fit sheets</p>
                         </div>
@@ -200,12 +236,14 @@ that protect homes and the planet</p>
         </div>
     </section>
     <section>
+        {% set section = page.section("home-compatible") %}
         <div class="content text-center">
-            <span class="small-text spacedish-text  heavy-weight caps">COMPATIBLE VARIATIONS</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">We Convert Conservatories of All Shapes &amp; Sizes !</h3>
+            <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title  }}</h3>
         </div>
         <div class="grid col-6 md-col-3 sm-col-1 mt-3 pt-3">
-            {% for item in con_shapes  %}
+            {% set con_shapes = section.list_for('con-shapes') %}
+            {% for item in con_shapes.items  %}
                 {% set card = item %}
                 {% include 'fragments/cards/light-card-long.html' %}
             {% endfor %}

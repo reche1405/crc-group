@@ -6,85 +6,93 @@
     {% include "base/header.html" %}
     {% endblock header %}
     {% block hero %}
-    <div class="hero hero-short">
-        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
-            {% include 'base/breadcrumbs.html' %}
-            <h1>{{page.body_title or 'Services'}}</h1>
-            <div class="full-width">
-                <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
-            </div>
-            <p class="mx-auto w-ch50 smaller-text lh-2">{{ page.body_intro }}</p>
-        </div>
-    </div>
+    {% set hero_img = 'services.jpg' %}
+    {% include "base/hero.html" %}
     {% endblock hero %}
     {% block body %}
     <section>
         <div class="content grid col-3 md-col-2 sm-col-1 g-5">
             {% for service in services  %}
-            <div class="card card--light card--light-1 p-4">
-                <h4>{{service.title}}</h4>
-                <div class="seperator seperator--darker my-3"></div>
-                <p class="py-3">{{service.short_desc}}</p>
-                <ul >
-                    {% for text in service.benefits.text %}
-                        <li class="flex g-2 align-center pb-2">
-                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
-                                            <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
-                                        </svg>
-                        <span>{{ text }}</span>
-                        </li>
+            <div class="card card--light card--light-1">
+                <div class="card-img--alt">
+                    {% if service.featured_media %}
+                    <img src="{{ service.featured_media.get_absolute_url() }}" class="object-cover" alt="{{service.title}}">
+                    {% else %}
+                    <img src="{{ url_for('static', filename='img/placehold/roof-conversions-service.jpeg')}}" class="object-cover" alt="{{service.title}}">
+                    {% endif %} 
+                </div>
+                <div class="p-4">
+                    <h4>{{service.title}}</h4>
+                    <div class="seperator seperator--darker my-3"></div>
+                    <p class="py-3">{{service.short_desc}}</p>
+                    <ul >
+                        {% if service.intro_list %}
+                        
+                        
+                        {% for item in service.intro_list.items %}
+                            <li class="flex g-2 align-center pb-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+                                    <path d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"/>
+                                </svg>
+                            <span>{{ item.text }}</span>
+                            </li>
                         {% endfor %}
-                </ul>
-                <a class="btn btn-dark p-3 mt-3 justify-between" style href="">
-                    <span>Explore</span>
-                    <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                        {% endif %}
+                    </ul>
+                    <a class="btn btn-dark p-3 mt-3 justify-between" style href="{{service.get_absolute_url()}}">
+                        <span>Explore</span>
+                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
             {% endfor %}
         </div>
     </section>
     <section>
+        {% set section= page.section('services-why-us')%}
             <div class="section--dark content br-2 no-pad p-6 sm-p-3 full-width">
-                <span class="small-text spacedish-text text-center mx-auto full-width  heavy-weight caps">WHY CHOOSE US</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight text-center pb-3">Your Trusted Extensions Partner.</h3>
-                <p class="smaller-text spacedish text mx-auto text-center py-3">We beleive that every build is unique, and our approach keeps that in mind.</p>
+                <span class="small-text spacedish-text text-center mx-auto full-width display-block mx-auto heavy-weight caps mb-2">{{ section.subtitle }}</span>
+                <h3 class="semilarge-text mx-auto lh-1 heavy-weight text-center pb-3">{{ section.title }}</h3>
+                <p class="smaller-text spacedish text mx-auto text-center py-3">{{ section.text }}</p>
 
                 <div class="quicktabs-wrapper dark">
-                
-                     <div class="tab-selectors flex justify-center full-width g-3  mb-5 mt-3">
-                        <div class="tab-selector is-active heavy-weight "
-                            data-tab="0"
-                            data-text="As active members of the Eurcell Group, We offer premium ranges of tiles offering the latest in temprature regulating technology."
-                            data-reasons="Premium Materials|Industry Standard Tools|Best Practices|Industry Connections|Wide Range of Tiles|Multiple Glazing Options"
-                            >
-                            <button class="br-4 small-text px-3">Construction Quality</button>
-                        </div>
-                        <div class="tab-selector  heavy-weight" 
-                            data-tab="1"
-                            data-text="Our vision is to be the most trusted  impactful extension specialists in the south east, known for transforming external spaces."
-                            data-reasons="South East Coverage|24/7 Contact Support"  
-                        >
-                            <button class="br-4 small-text px-3">Process Quality</button>
-                        </div>
-                        <div class="tab-selector  heavy-weight" 
-                            data-tab="2"
-                            data-text=""
-                        >
-                            <button class="br-4 small-text px-3">Certification &amp; Safety</button>
+                    {% set construction = section.list_for('service-construction') %}
+                    {% set process = section.list_for('service-process') %}
+                    {% set certs = section.list_for('service-safety') %}
+                    {% set service_lists = [ construction, process, certs ] %}
+                    <div class="full-width overflow-x-auto">
+                        <div class="tab-selectors flex justify-center  sm-justify-start full-width g-3  mb-5 mt-3">
+                            {% for ls in service_lists %}
+                            
+                                <div class="tab-selector is-active heavy-weight fs-0 fg-0"
+                                    data-tab="0"
+                                    data-text="{{ls.description}}"
+                                    data-reasons="{% for item in ls.items %}{{item.text}}|{% endfor %}"
+                                    >
+                                    <button class="br-4 small-text px-3">{{ ls.title }}</button>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 <div class="seperator seperator--darker mt-3 mb-5"></div>
 
                     <div class="tab-detail-wrapper">
-                        <div class="tab-detail grid col-2 sm-col-1 g-3">
-                            <div></div>
+                        <div class="tab-detail grid col-2 sm-col-1 g-6">
+                            <div class="flex justify-end full-width">
+
+                                <div class="screen-img mb-3 mt-2">
+                                    <img src="{{ url_for('static', filename='img/inspection.png')}}" class="object-cover" alt="">
+                                </div>
+                            </div>
                             <div>
                                 <h3 class="text-left lh-2 light-weight" style="font-size:2rem;"></h3>
                                 <p class="py-3 lh-2 smaller-text text-left w-ch60"></p>
-                                <div class="seperator seperator--darker"></div>
+                                <div class="mr-6 sm-mr-0 py-3">
+                                    <div class="seperator seperator--darker  mb-3"></div>
+                                </div>
                                 <ul class="py-3 grid col-2 sm-col-1 g-2">
                                     <li class="flex g-2 align-center">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
@@ -135,48 +143,27 @@
                 </div>
         </section>
     <section>
+        {% set section = page.section('services-process')%}
         <div class="content text-center ">
-            <span class="small-text spacedish-text  heavy-weight caps">OUR PROCESS</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight pb-3">Our Construction Work Process</h3>
-            <p class="smaller-text spacedish text mx-auto text-center py-3">From brief to handover, we have a four point process that adhere to.</p>
+            <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight pb-3">{{ section.title }}</h3>
+            <p class="smaller-text spacedish text mx-auto text-center py-3">{{ section.text }}</p>
         </div>
         <div class="grid content col-4 md-col-2 g-3 sm-col-1 pt-4">
+            {% set process = section.list_for('service-process') %}
+            {% for item in process.items %}
+            
             <div class="card card--light card--light-2 p-2 text-center">
                 <div class="clip-img--rounded">
                 </div>
                 <div class="card-circle grid justify-center align-center heavier-weight average-text p-2">
-                    <span>01</span>
+                    <span>0{{ loop.index }}</span>
                 </div>
-                <span class="heavy-weight medium-text">Planning &amp; Consultation</span>
-                <p class="p-3">We operate around your needs and co-operate to create a working plan of action.</p>
+                <span class="heavy-weight medium-text">{{ item.text  }}</span>
+                <p class="p-3">{{ item.subtext }}</p>
             </div>
-            <div class="card card--light card--light-2 p-2 text-center">
-                <div class="clip-img--rounded">
-                </div>
-                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2">
-                    <span>02</span>
-                </div>
-                <span class="heavy-weight medium-text">Planning &amp; Consultation</span>
-                <p class="p-3">We operate around your needs and co-operate to create a working plan of action.</p>
-            </div>
-            <div class="card card--light card--light-2 p-2 text-center">
-                <div class="clip-img--rounded">
-                </div>
-                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2">
-                    <span>03</span>
-                </div>
-                <span class="heavy-weight medium-text">Planning &amp; Consultation</span>
-                <p class="p-3">We operate around your needs and co-operate to create a working plan of action.</p>
-            </div>
-            <div class="card card--light card--light-2 p-2 text-center">
-                <div class="clip-img--rounded">
-                </div>
-                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2">
-                    <span>04</span>
-                </div>
-                <span class="heavy-weight medium-text">Project Handover</span>
-                <p class="p-3">We operate around your needs and co-operate to create a working plan of action.</p>
-            </div>
+            {% endfor %}
+            
         </div>
     </section>
 
