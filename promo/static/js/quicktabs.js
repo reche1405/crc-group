@@ -18,17 +18,19 @@ const qtabHandlePress = (e) => {
     setActive(target.closest('.tab-selector'));
 
     if(title) {
-        title.innterText= '';
+        title.style.opacity = 0;
         title.classList.remove('is-visible')
         setTimeout(() => {
+            title.style = '';
             title.innerText = target.innerText
             title.classList.add('is-visible')
         }, 300)
     }
-    para.innerText = '';
+    para.style.opacity = 0;
     para.classList.remove('is-visible')
     setTimeout(() => {
         para.innerText = data.text;
+        para.style= '';
             para.classList.add('is-visible')
         
     }, 400)
