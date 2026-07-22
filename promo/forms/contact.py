@@ -6,7 +6,7 @@ class ContactForm(Form):
     class Meta:
         csrf = True
         csrf_class = SessionCSRF  
-        csrf_secret = b'yD5g@4]!wer45g8fda5thk^wtyokVe468f3v{/}' 
+        csrf_secret = b'yD5g@4]!wer45gldsa5thk^wtyokVe468f3v{/}' 
     name = StringField(
         "Name",
         validators=[

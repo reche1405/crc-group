@@ -121,9 +121,11 @@ def contact():
                
         else: 
             print("Error parsing form data!!!!")
-            for error in form.errors:
-                print(error)
-            flash("There was an error parsing your message, please try again.", "error")
+            for field_name, error_messages in form.errors.items():
+                for err in error_messages:
+                    print(f"Field [{field_name}]: {err}")
+                    flash(f"Field [{field_name}]: {err}")
+                        
 
             return redirect(url_for('main.contact'))       
     return render_template('pages/contact.html', **context)
