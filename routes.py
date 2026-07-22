@@ -1,5 +1,5 @@
 import math
-from flask import Blueprint, request, session, current_app, redirect, url_for, flash, render_template, send_from_directory, abort
+from flask import Blueprint, Response, request, session, current_app, redirect, url_for, flash, render_template, send_from_directory, abort
 from flask_login import current_user, login_user
 
 from flask_mailman import EmailMessage
@@ -8,6 +8,7 @@ from promo.admin.forms.login import LoginForm
 from promo.models.user import User
 from promo.models.page import Page, Section
 from promo.models.list import List, ListItem
+from promo.models.area import Area, Location
 
 from promo.models.article import BlogCategory, Article
 from promo.models.service import Category, Service
@@ -300,3 +301,58 @@ def policy_detail(slug):
 @main.errorhandler(404)
 def error_not_found(e):
     return render_template('error/404.html')
+
+
+
+
+
+@main.route("/sitemap.txt")
+def sitemap():
+    base_url = "https://theconservatoryroofconverters.co.uk"
+    urls = [
+        base_url,
+        create_url(base_url, 'services/'),
+        create_url(base_url, 'contact/'),
+        create_url(base_url, 'projects/'),
+        create_url(base_url, 'areas/'),
+        create_url(base_url, 'blog/'),
+        
+    ]
+    locations  = Location.get_all()
+    policies = Policy.get_all()
+    services = Service.get_all()
+    projects = Project.get_all()
+    articles = Article.get_all()
+    for location in locations:
+        urls.append(create_url(base_url, f"locations/{location.slug}/"))
+
+    for policy in policies:
+        urls.append(create_url(base_url, f"legal/{policy.slug}/"))
+
+    for service in services:
+        urls.append(create_url(base_url, f"services/{service.slug}/"))
+        for location in locations:
+            urls.append(create_url(base_url, f"services/{service.slug}/{location.slug}/"))
+
+    for project in projects:
+        urls.append(create_url(base_url, f'projects/{project.slug}/'))
+
+    for article in articles:
+        urls.append(create_url(base_url, f'blog/{article.slug}/'))
+
+    sitemap_content = "\n".join(urls)
+    return Response(sitemap_content, mimetype="text/plain")
+
+def create_url(base, relative):
+    return f"{base}/{relative}"
+
+
+
+@main.route("/robots.txt")
+def robots():
+    content_str = """User-aagent: *
+Disallow: /admin/
+Disallow: /login/
+Sitemap: https://therokgroup.co.uk/sitemap.txt
+"""
+    return Response(content_str, mimetype="text/plain")

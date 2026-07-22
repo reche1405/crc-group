@@ -1398,6 +1398,7 @@ table.comparrison tr th {
     aspect-ratio: 1/1;
     border-radius: var(--space-1);
     background-color:var(--clr-grey-darker);
+    flex-shrink:0;
 
 }
 .review-stars {
