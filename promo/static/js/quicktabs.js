@@ -20,17 +20,17 @@ const qtabHandlePress = (e) => {
     if(title) {
         title.style.opacity = 0;
         title.classList.remove('is-visible')
+        title.innerText = target.innerText
         setTimeout(() => {
-            title.style = '';
-            title.innerText = target.innerText
+            title.style.opacity = 'inherit';
             title.classList.add('is-visible')
         }, 300)
     }
     para.style.opacity = 0;
     para.classList.remove('is-visible')
+    para.innerText = data.text;
     setTimeout(() => {
-        para.innerText = data.text;
-        para.style= '';
+        para.style.opacity = 'inherit';
             para.classList.add('is-visible')
         
     }, 400)
