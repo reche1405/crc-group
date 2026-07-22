@@ -133,6 +133,20 @@
     {% block extra_scripts %}
     <script src="{{ url_for('static', filename='js/fs-carousel.js') }}"></script>
     <script>
-    const fsCarousel = new FullScreenCarousel();
+
+    const carouselData = {{ carousel|tojson|safe }};
+    console.log(carouselData);
+    document.addEventListener('DOMContentLoaded', () => {
+            const carousel = new FullScreenCarousel({
+                autoPlayInterval: carouselData.auto_play_interval,
+                items: carouselData.items,
+                orientation: carouselData.orientation,
+            });
+            
+            // Make carousel available globally for debugging (optional)
+            window.carousel = carousel;
+        });
+
+
     </script>
     {% endblock extra_scripts %}

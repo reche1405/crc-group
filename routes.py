@@ -193,9 +193,13 @@ def project_detail(slug):
     project = Project.get_by_slug(slug)
     if not project:
         return abort(404)
+    carousel = None
     context = {
         'project' : project
     }
+    if project.gallery: 
+        carousel = project.gallery.to_json()
+        context['carousel'] = carousel
     return render_template('pages/project-detail.html', **context)
 
 @main.route('/locations/')
