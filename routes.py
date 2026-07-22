@@ -80,7 +80,7 @@ def home():
     }
     return render_template('pages/index.html', **context)
 
-@main.route('/contact/')
+@main.route('/contact/', methods=['GET', 'POST'])
 def contact():
 
     form = ContactForm(request.form, meta={'csrf_context': session})
