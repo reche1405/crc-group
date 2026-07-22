@@ -24,6 +24,8 @@ class Service(SluggedModel):
     __tablename__ = 'services'
     url_prefix = 'services'
 
+    singular_title = db.Column(db.String(255), nullable=True)
+    verbose_title = db.Column(db.String(255), nullable=True)
     parent_route = db.Column(db.String(255), nullable=False, default='service_list')
     parent_title = db.Column(db.String(255), nullable=False, default='Services')
     short_desc = db.Column(db.String(500), nullable=False)

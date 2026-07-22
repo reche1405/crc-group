@@ -57,9 +57,10 @@
         </div>
     </div>
     <div class="flex content full-width justify-between align-center py-2">
-        <div>
-            <a href="/privacy-policy">Privacy Policy</a> 
-            <a href="/terms-of-service">Terms of Service</a>
+        <div class="flex g-3 justify-start">
+            <a href="{{url_for('main.policy_detail', slug='privacy-policy')}}">Privacy</a> 
+            <a href="{{url_for('main.policy_detail', slug='cookie-policy')}}">Cookies</a> 
+            <a href="{{url_for('main.policy_detail', slug='terms-and-conditions')}}">Terms</a>
         </div>
         <p class="text-right">&copy; {{ current_year }} CRC Group. All rights reserved.</p>
     </div>

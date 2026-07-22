@@ -1,5 +1,5 @@
  // ---------- CONFIGURATION ----------
-        const AUTO_INTERVAL_MS = 2500;      // autoplay display time
+        let AUTO_INTERVAL_MS = 2500;      // autoplay display time
         const TRANSITION_MS = 700;           // scroll animation duration (matches CSS transition)
         const DESKTOP_VISIBLE = 4;
         const TABLET_VISIBLE = 3;
@@ -29,17 +29,55 @@
         let isSwiping = false;
         let swipeThreshold = 50;
         
-        // ---------- GENERATE SAMPLE SLIDES (10 distinct cards) ----------
-        const sampleIcons = ["🎨", "🚀", "🎵", "📸", "⚡", "🍕", "🏔️", "🎮", "💡", "🌈"];
-        const sampleTitles = ["Creativity", "Velocity", "Melody", "Snapshot", "Energy", "Fusion", "Horizon", "Arcade", "Insight", "Prism"];
-        const sampleDescs = ["Infinite ideas", "Fast & smooth", "Harmonic sound", "Capture moment", "Power boost", "Tasty treats", "Wild peaks", "Play quest", "Bright minds", "Color burst"];
-        
-        for (let i = 0; i < 12; i++) {   // 12 original cards gives nice loop feel
-            let icon = sampleIcons[i % sampleIcons.length];
-            let title = `${sampleTitles[i % sampleTitles.length]} ${i+1}`;
-            let desc = sampleDescs[i % sampleDescs.length];
-            slidesData.push({ id: i, icon: icon, title: title, desc: desc });
+        try {
+        // If carouselData exists globally, use it. Otherwise, look for it.
+        let dataSrc = typeof carouselData !== 'undefined' ? carouselData : null;
+
+        if (!dataSrc) {
+            // Fallback: Attempt to grab it if it was inside a script tag directly
+            const scriptEl = document.getElementById('carousel-data-script');
+            if (scriptEl) {
+                // Evaluates the string script safely if it was injected
+                eval(scriptEl.innerHTML);
+                if (typeof carouselData !== 'undefined') {
+                    dataSrc = carouselData;
+                }
+            }
         }
+
+        if (dataSrc && dataSrc.items) {
+            // Extract dynamically supplied autoplay interval if it exists
+            if (dataSrc.autoplay_interval) {
+                AUTO_INTERVAL_MS = dataSrc.autoplay_interval;
+            }
+
+            // Map your actual items into slidesData
+            dataSrc.items.forEach(item => {
+                slidesData.push({
+                    id: item.id,
+                    icon: item.img_url, // Using 'url' here instead of an emoji icon
+                    title: item.title,
+                    desc: item.description || item.desc || ''
+                });
+            });
+        }
+    } catch (e) {
+        console.error("Failed to parse carousel data script wrapper:", e);
+    }
+        if (slidesData.length < 1) {
+
+            const sampleIcons = ["🎨", "🚀", "🎵", "📸", "⚡", "🍕", "🏔️", "🎮", "💡", "🌈"];
+            const sampleTitles = ["Creativity", "Velocity", "Melody", "Snapshot", "Energy", "Fusion", "Horizon", "Arcade", "Insight", "Prism"];
+            const sampleDescs = ["Infinite ideas", "Fast & smooth", "Harmonic sound", "Capture moment", "Power boost", "Tasty treats", "Wild peaks", "Play quest", "Bright minds", "Color burst"];
+            
+            for (let i = 0; i < 12; i++) {   // 12 original cards gives nice loop feel
+                let icon = sampleIcons[i % sampleIcons.length];
+                let title = `${sampleTitles[i % sampleTitles.length]} ${i+1}`;
+                let desc = sampleDescs[i % sampleDescs.length];
+                slidesData.push({ id: i, icon: icon, title: title, desc: desc });
+            }
+        }
+
         totalRealSlides = slidesData.length;
         
         // ---------- INFINITE LOOP: BUILD VIRTUAL ARRAY (duplicate left & right) ----------
@@ -108,7 +146,7 @@
         }
         
         // render slides to DOM based on virtualArray and current visible range
-        function renderTrackSlides() {
+       function renderTrackSlides() {
             if (!trackEl) return;
             const totalVirtual = virtualArray.length;
             // we only render a subset for performance? but we render all virtual (it's manageable, max 5*12=60 items)
@@ -122,16 +160,22 @@
                     const slideDiv = document.createElement('div');
                     slideDiv.className = 'carousel-slide';
                     slideDiv.setAttribute('data-virtual-idx', idx);
-                    // inner card
-                    slideDiv.innerHTML = `
-                        <div class="carousel-card">
+                    const isImageUrl = slide.icon.startsWith('/') || slide.icon.startsWith('http');
+                    const image = document.createElement('img');
+                    image.src = slide.icon; 
+                    image.classList.add('object-cover', 'carousel-img')
+                    const card = document.createElement('div');
+                    card.classList.add('carousel-card'); 
+                    card.appendChild(image);
+                    slideDiv.appendChild(card);
+                    const body = document.createElement('div');
+                    body.classList.add('carousel-card-body');
+                    card.appendChild(body)
 
-                            <div class="carousel-card-overlay">
-                            <div class="carousel-card-icon">${slide.icon}</div>
+        
+                    body.innerHTML += `
+                
                             <div class="carousel-card-title">${escapeHtml(slide.title)}</div>
-                            <div class="carousel-card-desc">${escapeHtml(slide.desc)}</div>
-                            </div>
-                        </div>
                     `;
                     trackEl.appendChild(slideDiv);
                 });
@@ -152,6 +196,7 @@
                 return c;
             });
         }
+
         
         // update per-slide width based on visibleCount and container width
         function updateSlideWidths() {

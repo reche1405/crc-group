@@ -6,6 +6,7 @@ from promo .models.project import ProjectTag, Project
 from promo.models.review import Review
 from promo.models.page import Page, Section
 from promo.models.article import BlogCategory, Article
+from promo.models.policy import Policy
 from app import create_app
 category_data = [
     {"title" : "Commercial"},
@@ -128,7 +129,23 @@ page_data = [
         )
     },
     
-   
+   {
+       'tag' : 'policies',
+       'title' : 'The Legal Stuff | CRC',
+       'description' : (
+           "Find all of CRC Group’s legal resources in one place privacy policy, cookie policy, "
+            "terms & conditions, data protection notices, and other governance information that explains how we handle your data "
+            "and use our website."
+       ),
+       'keywords' : (
+           "CRC Group Legal Documents, Legal Resources, The Boring Stuff"
+       ),
+       'body_title' : 'The Borging Suff',
+       'body_intro': (
+           "Compliance is key! It's not for everyone, but we have to have it."
+           " Find our privacy, cookies and terms policies below"
+       )
+   }
   
 ]
 
@@ -207,6 +224,8 @@ section_data = [
 service_data = [
     {
         'title' : 'Conservatory Roofs',
+        'singular_title' : 'Conservatory Roof',
+        'verbose_title' : 'Conservatory Roof Conversion',
         'short_desc' : "We utilise modern state of the art tiling solutions to maximise your conservatories light and tempature stabilisation, Allowing comfort all-year round.",
         'slug': 'conservatory-roofs',
         'desc': "If you love the natural light of your conservatory but find it practically unusable—becoming a greenhouse in the peak of summer and a freezing icebox throughout the winter—you are not alone. Traditional glass or polycarbonate roofs simply cannot handle the extreme seasonal shifts of the UK climate.\n"
@@ -216,6 +235,8 @@ service_data = [
     },
     {
         'title' : 'Garden Rooms',
+        'singular_title' : 'Garden Room',
+        'verbose_title' : 'Garden Room Installation',
         'short_desc' : "We convert open spaces into fully functioning exterior buildings, with functioning electricity and gas, and a regulated temprature all yar round.",
         'slug': 'garden-rooms',
         'desc': "If you love the natural light of your conservatory but find it practically unusable—becoming a greenhouse in the peak of summer and a freezing icebox throughout the winter—you are not alone. Traditional glass or polycarbonate roofs simply cannot handle the extreme seasonal shifts of the UK climate.\n"
@@ -225,6 +246,8 @@ service_data = [
     },
     {
         'title' : 'Interior Design',
+        'singular_title' : 'Interior Design',
+        'verbose_title' : 'Conservatory Interior Redesign',
         'short_desc' : "Feel as good on the inside as you do on the out! Interior redesigns to match your premium new exterior spaces. From Painting & Decorating to Furnishing.",
         'slug': 'interior-design',
         'desc': "If you love the natural light of your conservatory but find it practically unusable—becoming a greenhouse in the peak of summer and a freezing icebox throughout the winter—you are not alone. Traditional glass or polycarbonate roofs simply cannot handle the extreme seasonal shifts of the UK climate."
@@ -1781,6 +1804,315 @@ article_data = [
     
 ]
 
+
+policy_data = [
+    {
+        'title' : 'Privacy Policy',
+        'slug' : 'privacy-policy', 
+        'intro' : "We are committed to protecting your privacy. This policy explains how we handle your personal information when you use our website or contact us.",
+        'body' : '''
+            <h1>Privacy Policy for The Conservatory Roof Converters</h1>
+            <h2>Effective Date: 15/07/2026</h2>
+            <p><strong>Company:</strong> The Conservatory Roof Converters</p>
+            <p><strong>Partner:</strong> Eurocell (Approved Installer)</p>
+
+            <h2>1. Introduction</h2>
+            <p>At The Conservatory Roof Converters, we are committed to protecting your privacy. This policy explains how we handle your personal information when you use our website or contact us.</p>
+            <p><strong>Our Commitment:</strong> We operate a strict "No Storage" policy. We do not store your personal information on our website servers or internal databases.</p>
+
+            <h2>2. Information We Collect</h2>
+            <p>We collect information strictly for the purpose of responding to your enquiries. The only information collected is:</p>
+            <ul>
+                <li><strong>Contact Form Data:</strong> When you fill out our contact form, we collect your name, email address, phone number, and postcode.</li>
+                <li><strong>Technical Data:</strong> Standard internet log information (IP address, browser type) is temporarily processed by our hosting provider for security and functionality purposes. This is not used to identify you personally and is not stored by us.</li>
+            </ul>
+
+            <h2>3. How We Use Your Information</h2>
+            <p>Because we do not store data, your information is used immediately for a specific purpose:</p>
+            <ul>
+                <li><strong>To Respond to Enquiries:</strong> When you submit a contact form, the details you provide are sent directly via email to our designated contact team. This allows us to call or email you back regarding your conservatory roof conversion project.</li>
+                <li><strong>Communication:</strong> To provide you with quotes, updates, or information regarding Eurocell roofing products.</li>
+            </ul>
+
+            <h2>4. Data Storage and Retention</h2>
+            <h3>This is the most important section regarding your data</h3>
+            <ul>
+                <li><strong>No Database Storage:</strong> We do not save, upload, or store your contact details in our website database, CRM system, or internal servers.</li>
+                <li><strong>Email Only:</strong> Your information exists only within the email sent to our team.</li>
+                <li><strong>Deletion:</strong> Once your enquiry has been resolved and the project is complete, these emails are deleted from our inboxes in line with standard housekeeping practices. We do not retain your details for marketing purposes unless you explicitly opt-in separately.</li>
+            </ul>
+
+            <h2>5. Data Security</h2>
+            <p>Because your data is not stored on our web server, the risk of a data breach via our website is minimal. We employ SSL encryption (HTTPS) to protect the transmission of your data from your browser to our email servers. We ensure our email accounts are secured with strong passwords and two-factor authentication.</p>
+
+            <h2>6. Third-Party Sharing</h2>
+            <p>We do not sell, trade, or rent your personal information to third parties. However, as we work with <strong>Eurocell</strong>, your project details (specifically regarding materials required) may be shared with them solely for the purpose of fulfilling your order if you choose to proceed with a conversion.</p>
+
+            <h2>7. Your Rights (GDPR)</h2>
+            <p>Under UK GDPR, you have the right to:</p>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of the data we hold about you.</li>
+                <li><strong>Rectification:</strong> Correct any inaccurate data.</li>
+                <li><strong>Erasure:</strong> Request that we delete your data.</li>
+                <li><strong>Restriction:</strong> Object to us processing your data.</li>
+            </ul>
+            <p><strong>Important Note:</strong> Since we do not store your data on a database, if you request erasure, we simply delete the email containing your information from our team's inbox.</p>
+            <p>To exercise these rights, please contact us at: <strong>[Insert Your Email Address]</strong>.</p>
+
+            <h2>8. Cookies</h2>
+            <p>Our website uses strictly necessary cookies only. These are functional cookies required for the website to operate (e.g., remembering your cookie preferences). We do not use tracking, analytics, or marketing cookies.</p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>This is a temporary policy and may be updated. We will notify you of any changes by posting the new policy on this page.</p>
+
+            <h2>10. Contact Us</h2>
+            <p>If you have any questions about this privacy policy, please contact us:</p>
+            <ul>
+                <li><strong>Company:</strong> The Conservatory Roof Converters</li>
+                <li><strong>Email:</strong> [Insert Your Email Address]</li>
+                <li><strong>Phone:</strong> [Insert Your Phone Number]</li>
+            </ul>
+
+            <h2>Form Disclaimer</h2>
+            <h3>Important notice before submitting</h3>
+            <p>By submitting this form, you agree that your details will be sent via email to our team for the sole purpose of responding to your enquiry. We do not store your data on our website.</p>
+        '''
+    },
+    {
+        'title': 'Cookie Policy',
+        'intro' : "We use strictly necessary cookies to ensure our website functions properly. This policy explains what cookies are, how we use them, and your choices regarding their use.",
+        'slug' : 'cookie-policy', 
+        'body' : """
+                <h1>Cookie Policy for The Conservatory Roof Converters</h1>
+                <h2>Effective Date: 15/07/2026</h2>
+                <p><strong>Company:</strong> The Conservatory Roof Converters</p>
+                <p><strong>Partner:</strong> Eurocell (Approved Installer)</p>
+
+                <h2>1. What Are Cookies</h2>
+                <p>Cookies are small text files that are placed on your computer, smartphone, or other device when you visit a website. They are widely used to make websites work more efficiently, as well as to provide information to the website owners.</p>
+
+                <h2>2. How We Use Cookies</h2>
+                <p>At The Conservatory Roof Converters, we use cookies strictly for functional purposes. We do not use cookies for tracking, analytics, or marketing. Our use of cookies includes:</p>
+                <ul>
+                    <li><strong>Essential Cookies:</strong> These are necessary for the website to function properly. They enable core functionality such as security, network management, and accessibility.</li>
+                    <li><strong>Preference Cookies:</strong> These allow the website to remember your preferences, such as your cookie consent choice.</li>
+                </ul>
+
+                <h2>3. Types of Cookies We Use</h2>
+                <h3>Strictly Necessary Cookies</h3>
+                <p>These cookies are essential for you to browse our website and use its features. Without these cookies, services like remembering your cookie preferences cannot be provided.</p>
+
+                <h3>Functional Cookies</h3>
+                <p>These cookies allow our website to remember choices you make and provide enhanced, more personal features. They do not track your browsing activity on other websites.</p>
+
+                <h2>4. Cookies We Do NOT Use</h2>
+                <p>We want to be clear about what we do not do. We do not use:</p>
+                <ul>
+                    <li><strong>Analytics Cookies:</strong> We do not use tools like Google Analytics to track your browsing behavior.</li>
+                    <li><strong>Marketing Cookies:</strong> We do not use cookies for advertising, remarketing, or targeting purposes.</li>
+                    <li><strong>Third-Party Tracking Cookies:</strong> We do not allow third-party services to place tracking cookies on our website.</li>
+                </ul>
+
+                <h2>5. Your Cookie Choices</h2>
+                <p>When you first visit our website, you will see a cookie banner that informs you about our use of cookies. You have the right to:</p>
+                <ul>
+                    <li><strong>Accept:</strong> Accept the use of strictly necessary cookies (required for the website to function).</li>
+                    <li><strong>Reject:</strong> Reject non-essential cookies (though we do not use any non-essential cookies).</li>
+                </ul>
+                <p><strong>Important Note:</strong> Because we only use strictly necessary cookies, you cannot disable them without affecting the functionality of our website.</p>
+
+                <h2>6. How to Manage Cookies</h2>
+                <p>You can manage your cookie preferences through your browser settings. Most web browsers allow you to:</p>
+                <ul>
+                    <li>View the cookies that are stored on your device.</li>
+                    <li>Delete individual cookies or all cookies.</li>
+                    <li>Block cookies from specific websites.</li>
+                    <li>Block all cookies from being set.</li>
+                </ul>
+                <p>Please note that if you choose to block strictly necessary cookies, our website may not function correctly.</p>
+
+                <h2>7. Changes to This Cookie Policy</h2>
+                <p>This is a placeholder cookie policy and may be updated. We will notify you of any changes by posting the new policy on this page. You are advised to review this page periodically for any changes.</p>
+
+                <h2>8. Contact Us</h2>
+                <p>If you have any questions about our use of cookies or this cookie policy, please contact us:</p>
+                <ul>
+                    <li><strong>Company:</strong> The Conservatory Roof Converters</li>
+                    <li><strong>Email:</strong> [Insert Your Email Address]</li>
+                    <li><strong>Phone:</strong> [Insert Your Phone Number]</li>
+                </ul>
+
+                <h2>Cookie Banner Notice</h2>
+                <h3>What you will see on your first visit</h3>
+                <p>When you arrive at our website, you will see a cookie banner at the bottom of the page with the following message:</p>
+                <p><em>"We use strictly necessary cookies to ensure our website functions properly. We do not use tracking, analytics, or marketing cookies. By continuing to use our website, you agree to our use of essential cookies. <a href="#">Learn More</a> | <a href="#">Accept</a>"</em></p>
+            """
+    },
+    {
+        'title' : 'Terms & Conditions',
+        'intro' : "Please read these Terms and Conditions carefully before using our website or engaging our services. They govern your relationship with The Conservatory Roof Converters and outline your rights and obligations.",
+
+        'slug' : 'terms-and-conditions',
+        'body' : """
+            <h1>Terms and Conditions for The Conservatory Roof Converters</h1>
+            <h2>Effective Date: 15/07/2026</h2>
+            <p><strong>Company:</strong> The Conservatory Roof Converters</p>
+            <p><strong>Partner:</strong> Eurocell (Approved Installer)</p>
+            <p><strong>Registered Address:</strong> [Insert Your Registered Address]</p>
+            <p><strong>Company Registration Number:</strong> [Insert Company Number]</p>
+
+            <h2>1. Introduction</h2>
+            <p>Welcome to The Conservatory Roof Converters website. These Terms and Conditions govern your use of our website and the services we provide. By accessing this website and/or using our services, you agree to be bound by these terms. If you do not agree with any part of these terms, please do not use our website or services.</p>
+            <p>These terms apply to all visitors, users, and customers of The Conservatory Roof Converters.</p>
+
+            <h2>2. Definitions</h2>
+            <p>In these Terms and Conditions, the following definitions apply:</p>
+            <ul>
+                <li><strong>"Company", "We", "Us", "Our":</strong> Refers to The Conservatory Roof Converters.</li>
+                <li><strong>"You", "Your", "Customer":</strong> Refers to the user or customer engaging with our website or services.</li>
+                <li><strong>"Services":</strong> Refers to conservatory roof conversion services, including consultation, surveying, installation, and any associated work.</li>
+                <li><strong>"Website":</strong> Refers to The Conservatory Roof Converters website.</li>
+                <li><strong>"Eurocell":</strong> Refers to Eurocell, our approved partner for roofing materials.</li>
+            </ul>
+
+            <h2>3. Use of Our Website</h2>
+            <p>By using our website, you agree to:</p>
+            <ul>
+                <li>Use the website only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use of the website.</li>
+                <li>Not attempt to gain unauthorized access to any part of the website, servers, or databases.</li>
+                <li>Not use the website to transmit any viruses, malware, or other harmful code.</li>
+                <li>Not use the website in any way that could damage, disable, or impair the website or interfere with any other party's use of the website.</li>
+            </ul>
+            <p>We reserve the right to restrict or terminate your access to our website at our sole discretion if we believe you have breached these terms.</p>
+
+            <h2>4. Services We Provide</h2>
+            <p>The Conservatory Roof Converters specializes in conservatory roof conversions. Our services include:</p>
+            <ul>
+                <li>Free initial consultations and quotes.</li>
+                <li>Site surveys and assessments.</li>
+                <li>Supply and installation of conservatory roof conversions using Eurocell materials.</li>
+                <li>Post-installation support and aftercare.</li>
+            </ul>
+            <p>All services are subject to availability and site-specific assessment. We reserve the right to refuse service at our discretion.</p>
+
+            <h2>5. Quotes and Estimates</h2>
+            <p>Any quotes or estimates provided by The Conservatory Roof Converters are:</p>
+            <ul>
+                <li><strong>Free of charge:</strong> Initial quotes are provided at no cost.</li>
+                <li><strong>Subject to survey:</strong> All quotes are provisional and subject to a full on-site survey.</li>
+                <li><strong>Time-limited:</strong> Quotes are valid for the period stated on the quote document.</li>
+                <li><strong>Subject to change:</strong> We reserve the right to amend a quote if additional work is identified during the installation process.</li>
+            </ul>
+            <p>We strive to ensure all quotes are accurate, but please note that photographs or measurements provided by you are for guidance only and may not be exact.</p>
+
+            <h2>6. Orders and Contracts</h2>
+            <p>When you accept a quote and proceed with a conservatory roof conversion:</p>
+            <ul>
+                <li>A formal order will be issued confirming the scope of work, timeline, and total cost.</li>
+                <li>A deposit may be required before work commences.</li>
+                <li>A contract will be formed between you and The Conservatory Roof Converters upon written acceptance of the order and payment of any deposit.</li>
+                <li>You have a statutory right to cancel within 14 days of placing your order (Cooling-off Period).</li>
+            </ul>
+
+            <h2>7. Pricing and Payment</h2>
+            <p>Our pricing structure is as follows:</p>
+            <ul>
+                <li><strong>Deposit:</strong> A deposit of [Insert Deposit Percentage]% is required to secure your booking and order materials from Eurocell.</li>
+                <li><strong>Balance:</strong> The remaining balance is due upon completion of the installation.</li>
+                <li><strong>Payment Methods:</strong> We accept bank transfer, card payments, and cash.</li>
+                <li><strong>Late Payment:</strong> Invoices not paid within [Insert Number] days may incur late payment charges as permitted by law.</li>
+            </ul>
+
+            <h2>8. Eurocell Partnership</h2>
+            <p>The Conservatory Roof Converters is an approved partner of Eurocell. This means:</p>
+            <ul>
+                <li>We use genuine Eurocell materials for all roof conversions unless otherwise specified.</li>
+                <li>Our installations meet Eurocell's quality and installation standards.</li>
+                <li>We may share your project details with Eurocell solely for the purpose of ordering materials.</li>
+                <li>Eurocell may offer manufacturer warranties on their products, which are separate from our installation guarantee.</li>
+            </ul>
+
+            <h2>9. Installation and Project Timeline</h2>
+            <p>We aim to complete your conservatory roof conversion within the agreed timeline. However, please note:</p>
+            <ul>
+                <li>Timelines are estimates and may be affected by weather conditions, material availability, or unforeseen site issues.</li>
+                <li>We will communicate any delays promptly.</li>
+                <li>You agree to provide reasonable access to your property during working hours.</li>
+                <li>You are responsible for securing any pets or children during installation.</li>
+            </ul>
+
+            <h2>10. Warranties and Guarantees</h2>
+            <p>At The Conservatory Roof Converters, we stand by the quality of our work:</p>
+            <ul>
+                <li><strong>Installation Guarantee:</strong> We offer a [Insert Number]-year guarantee on our installation workmanship.</li>
+                <li><strong>Product Warranty:</strong> Eurocell provides a [Insert Number]-year product warranty on their materials, subject to their terms and conditions.</li>
+                <li><strong>What is Covered:</strong> Our guarantee covers defects in installation that affect the performance or safety of the roof.</li>
+                <li><strong>What is NOT Covered:</strong> Damage caused by misuse, accidental damage, neglect, or changes to the structure after installation.</li>
+            </ul>
+
+            <h2>11. Liability</h2>
+            <p>To the fullest extent permitted by law:</p>
+            <ul>
+                <li>Our total liability to you shall not exceed the total value of the services provided.</li>
+                <li>We shall not be liable for any indirect, consequential, or incidental damages.</li>
+                <li>We do not exclude liability for death or personal injury caused by our negligence, fraud, or any other liability that cannot be excluded by law.</li>
+                <li>We are not responsible for any pre-existing structural issues discovered during installation.</li>
+            </ul>
+
+            <h2>12. Customer Obligations</h2>
+            <p>As a customer, you agree to:</p>
+            <ul>
+                <li>Provide accurate and complete information when requesting a quote or placing an order.</li>
+                <li>Obtain any necessary planning permission or building regulations approval for the work.</li>
+                <li>Ensure clear access to the work area and inform us of any hazards.</li>
+                <li>Pay all invoices in accordance with the agreed terms.</li>
+                <li>Inform us promptly of any issues or concerns during or after installation.</li>
+            </ul>
+
+            <h2>13. Cancellation and Refunds</h2>
+            <p>Our cancellation and refund policy is as follows:</p>
+            <ul>
+                <li><strong>Cooling-off Period:</strong> Under UK consumer law, you have 14 days from the date of order to cancel without penalty.</li>
+                <li><strong>After Cooling-off Period:</strong> Cancellations after this period may result in forfeiture of your deposit to cover costs incurred.</li>
+                <li><strong>During Installation:</strong> If you cancel once work has commenced, you will be liable for costs up to that point.</li>
+                <li><strong>Defective Work:</strong> If work is found to be defective, we will rectify the issue at no cost to you within a reasonable timeframe.</li>
+            </ul>
+
+            <h2>14. Intellectual Property</h2>
+            <p>All content on our website, including text, images, logos, and design, is the property of The Conservatory Roof Converters and is protected by copyright and intellectual property laws. You may not reproduce, distribute, or use any content without our prior written permission.</p>
+
+            <h2>15. Privacy and Data Protection</h2>
+            <p>We are committed to protecting your privacy. Please refer to our <a href="#">Privacy Policy</a> and <a href="#">Cookie Policy</a> for detailed information on how we handle your personal data.</p>
+
+            <h2>16. Links to Third-Party Websites</h2>
+            <p>Our website may contain links to third-party websites (including Eurocell). These links are provided for your convenience and do not imply our endorsement. We are not responsible for the content, privacy practices, or terms of third-party websites. You access them at your own risk.</p>
+
+            <h2>17. Changes to These Terms</h2>
+            <p>We reserve the right to update or modify these Terms and Conditions at any time without prior notice. Any changes will be effective immediately upon posting on this page. You are advised to review these terms periodically. Your continued use of our website and services constitutes acceptance of any changes.</p>
+
+            <h2>18. Governing Law</h2>
+            <p>These Terms and Conditions are governed by and construed in accordance with the laws of England and Wales. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the courts of England and Wales.</p>
+
+            <h2>19. Contact Us</h2>
+            <p>If you have any questions about these Terms and Conditions, please contact us:</p>
+            <ul>
+                <li><strong>Company:</strong> The Conservatory Roof Converters</li>
+                <li><strong>Email:</strong> [Insert Your Email Address]</li>
+                <li><strong>Phone:</strong> [Insert Your Phone Number]</li>
+                <li><strong>Address:</strong> [Insert Your Registered Address]</li>
+            </ul>
+
+            <h2>Form Submission Acknowledgement</h2>
+            <h3>By using our contact form, you acknowledge</h3>
+            <p>By submitting the contact form on our website, you agree that:</p>
+            <ul>
+                <li>Your details will be used solely for the purpose of responding to your enquiry.</li>
+                <li>Your data will not be stored on our website server.</li>
+                <li>You have read and agree to these Terms and Conditions, our <a href="#">Privacy Policy</a>, and our <a href="#">Cookie Policy</a>.</li>
+            </ul>
+        """
+    }
+]
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -1858,11 +2190,14 @@ def seed_app():
         for serv in service_data:
             service = Service(
                 title = serv['title'],
+                singular_title =  serv['singular_title'],
+                verbose_title =  serv['verbose_title'],
                 short_desc = serv['short_desc'],
                 slug = serv['slug'],
                 desc = serv['desc'],
                 category_id = serv['category_id'],
-                is_featured = serv['is_featured']
+                is_featured = serv['is_featured'],
+
             )
             services_to_add.append(service)
         try:
@@ -2022,6 +2357,22 @@ def seed_app():
             print(f"{bcolors.OKGREEN}Oh no unable to add articles{bcolors.ENDC}", e)
         else: 
             print(f"{bcolors.OKGREEN}Success! Added {len(arts_to_add)} articles.{bcolors.ENDC}\n\n")
+
+        print("Adding Policies")
+
+        pols_to_add = []
+        for policy in policy_data:
+            new_policy = Policy(**policy)
+            pols_to_add.append(new_policy)
+        try:
+            db.session.add_all(pols_to_add)
+        except Exception as e:
+            print(f"{bcolors.OKGREEN}Oh no unable to add policies{bcolors.ENDC}\n", e)
+        else: 
+            print(f"{bcolors.OKGREEN}Success! Added {len(arts_to_add)} policies .{bcolors.ENDC}\n\n")
+    
+
+        
         db.session.commit()
 
         print("Seeding complete!!!")

@@ -1,6 +1,9 @@
 import math
 from flask import Blueprint, request, session, current_app, redirect, url_for, flash, render_template, send_from_directory, abort
 from flask_login import current_user, login_user
+
+from flask_mailman import EmailMessage
+from werkzeug.exceptions import NotFound, BadRequest
 from promo.admin.forms.login import LoginForm
 from promo.models.user import User
 from promo.models.page import Page, Section
@@ -10,10 +13,11 @@ from promo.models.article import BlogCategory, Article
 from promo.models.service import Category, Service
 from promo.models.project import Project
 from promo.models.review import Review
+from promo.models.policy import Policy
 
 from promo.models.media import Media
 from promo.extensions.login_manager import login_manager
-
+from promo.forms.contact import ContactForm
 
 main = Blueprint("main", __name__)
 
@@ -65,25 +69,62 @@ def home():
         for _list in section.lists:
             print(len(_list.items))
     services = Service.get_home()
+    projects_data = Project.to_home_json()
+    project_count = len(projects_data['items'])
     context = {
         'page' : page,
-        'services' : services
+        'services' : services,
+        'projects_data' : projects_data,
+        'project_count' : project_count
         
     }
     return render_template('pages/index.html', **context)
 
 @main.route('/contact/')
 def contact():
-    page = {
-        'tag' : 'contact',
-        'body_title' : 'Contact Us',
-        'title' : 'Contact CRC Group',
-        'body_intro' : 'We are The Conservatory Roof Convrersion Group. And our specialism is in the name. We offer premium external space installations and conversions.'
-    }
+
+    form = ContactForm(request.form, meta={'csrf_context': session})
+
+    page = page = Page.get_for_tag('contact')
     context = {
         'page' :page,
+        'form' : form
     }
+    if request.method == "POST":
+        print(form.data)
+        if form.validate():
+            client_email = form.email.data
+            client_name = form.name.data
+            client_tel = form.number.data
+            message_body = form.message.data
+            print(f"MAIL PORT:  {current_app.config['MAIL_PORT']}")
+            print(f"MAIL USE SSL:  {current_app.config['MAIL_USE_SSL']}")
+            print(f"MAIL USE TLS:   {current_app.config['MAIL_USE_TLS']}")
+            #TEMP: Print the form data
+            print(f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}")
+            msg = EmailMessage(
+                subject="New Website Contact Query",
+                body=f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}",
+                to=[current_app.config['INBOUND_MAIL']]
+                
+            )
+            try:
+                
+                msg.send(fail_silently=False)
+                flash("Message sent successfully, we will respond within 2 business days..", "success")
+            except Exception as e:
+                print(f"Email failed to send: {e}")
+                flash(f"Email failed  to send. {e}", "error")
+               
+        else: 
+            print("Error parsing form data!!!!")
+            for error in form.errors.values():
+                print(error)
+            flash("There was an error parsing your message, please try again.", "error")
+
+            return redirect(url_for('main.contact'))       
     return render_template('pages/contact.html', **context)
+
 
 @main.route('/about/')
 def about():
@@ -114,14 +155,17 @@ def service_list():
 @main.route('/services/<string:slug>/')
 def service_detail(slug):
     service = Service.get_by_slug(slug)
-
+    form = ContactForm(meta={'csrf_context': session})
     if not service:
         #TODO: Add a flash message 
         #TODO: Turn this into a 404
+        flash("Unable to locate service.")
+        return abort(404)
 
         return redirect(url_for('main.service_list'))
     context = {
-        'service' : service
+        'service' : service,
+        'form' : form
     }
     return render_template('pages/service-detail.html', **context)
     
@@ -140,6 +184,8 @@ def project_list():
 @main.route('/projects/<string:slug>/')
 def project_detail(slug):
     project = Project.get_by_slug(slug)
+    if not project:
+        return abort(404)
     context = {
         'project' : project
     }
@@ -196,6 +242,7 @@ def article_list():
 @main.route('/blog/<string:slug>/')
 def article_detail(slug):
     article = Article.get_by_slug(slug)
+    if not article: return abort(404)
     context = {
         'article': article
     }
@@ -216,3 +263,29 @@ def serve_media(rel_path):
         return abort(404)
 
 
+@main.route('/legal/')
+def policy_list():
+    page = Page.get_for_tag('policies')
+    policies =Policy.get_all()
+    context = {
+        'page' : page,
+        'policies' : policies
+    }
+    return render_template('pages/policty-list.html', **context)
+
+@main.route("/legal/<slug>")
+def policy_detail(slug):
+    policy = Policy.get_by_slug(slug)
+    if not policy: return abort(404)
+    other_policies = Policy.query.filter(Policy.id != policy.id).all()
+
+    context = {
+        'policy' : policy,
+        'other_policies' : other_policies
+    }
+    return render_template('pages/policy-detail.html', **context)
+
+
+@main.errorhandler(404)
+def error_not_found(e):
+    return render_template('error/404.html')

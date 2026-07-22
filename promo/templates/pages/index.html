@@ -106,7 +106,7 @@
             <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title }}</h3>
             <div class="full-width overflow-x-auto py-4">
                 <div class="flex g3 align-center g-3 py-4 justify-center sm-justify-start">
-                    <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All (8)</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Conservatories</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
+                    <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All ({{project_count}})</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Conservatories</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
                 </div>
             </div>
         </div>
@@ -255,6 +255,10 @@ that protect homes and the planet</p>
 
     {% block extra_scripts %}
         <script src="/static/js/bl-slider.js"></script>
+
+        <script>
+            const carouselData = {{projects_data|safe}};
+        </script>
         <script src="/static/js/carousel.js"></script>
         <script src="/static/js/quicktabs.js"></script>
     {% endblock extra_scripts %}

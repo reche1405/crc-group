@@ -15,7 +15,12 @@
             {% for project in projects  %}
             <div class="card card--img ">
                 <div class="card-img">
+                    {% if project.featured_media %}
+                    <img src="{{project.featured_media.get_absolute_url()}}" class="object-cover"/>
+                    {% else %}
+                    <img src="{{url_for('static', filename='img/placehold/roof-conversions-service.jpeg' )}}" class="object-cover"/>
 
+                    {% endif %}
                 </div>
                 <div>
                     <div class="card-body card-body--displace pt-3  px-3">

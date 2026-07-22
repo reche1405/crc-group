@@ -117,6 +117,7 @@
     --space-5: 2rem;    /* 32px */
     --space-6: 3rem;    /* 48px */
     --section-pad: 4rem;
+    scrollbar-width: thin;
 }
 
 
@@ -528,6 +529,9 @@ header.floating-header .desktop-nav {
 .header-logo-wrapper a {
     cursor:pointer;
 }
+.header-logo-wrapper svg {
+    width:180px;
+}
 .header-logo {
     max-width:100px;
 }
@@ -907,6 +911,9 @@ button:disabled {
 .seperator.seperator--left::after {
     left:0;
 }
+.seperator.seperator--right::after {
+    right:0;
+}
 .seperator.seperator--center::after {left:37.5%; width:25%}
 
 .hero.hero-short {
@@ -1091,12 +1098,29 @@ button:disabled {
 }
 
 
+.z-2 {
+    z-index:2;
+}
+
+.z-1 {
+    z-index:1;
+
+}
+
 .card-img {
     width:100%;
     height:100%;
     background-color: var(--clr-grey);
     position: absolute;
     z-index:1;
+
+}
+.card:has(.card-img) .object-cover {
+    transition: scale 1s ease-out;
+}
+.card:has(.card-img):hover .object-cover{
+    scale:1.1;
+    transition: scale 5s ease-out;
 
 }
 .card-img--alt {
@@ -1168,6 +1192,8 @@ button:disabled {
     height:var(--height);
     border-radius:70px 0px 0px 70px;
     background-color: var(--clr-grey-dark);
+    position:relative;
+    overflow: clip;
 }
 
 
@@ -1429,6 +1455,10 @@ table.comparrison tr th {
      .grid.md-col-1 {
         grid-template-columns: 1fr;
     }
+    .grid.md-col-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+
+    }
     .md-hide {
         display:none; 
         visibility:hidden;
@@ -1479,6 +1509,10 @@ table.comparrison tr th {
         r: 10;
         animation-name: MobileImageMapMarker;
     }
+
+    .header-logo-wrapper svg {
+    width:120px;
+}
 
 }
 

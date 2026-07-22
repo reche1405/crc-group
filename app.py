@@ -69,6 +69,7 @@ def create_app():
         from promo.models.list import List, ListItem
         from promo.models.area import Area, Location
         from promo.models.review import Review
+        from promo.models.policy import Policy
 
 
 
@@ -91,6 +92,8 @@ def create_app():
         admin.add_view(BaseSecureView(BlogCategory, db, category='Blog'))
         admin.add_view(SlugifyAdminView(Location, db, category='Static'))
         admin.add_view(BaseSecureView(Area, db, category='Static'))
+        admin.add_view(SlugifyAdminView(Policy, db, category='Company'))
+        
 
 
 

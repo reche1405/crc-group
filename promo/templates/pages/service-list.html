@@ -155,8 +155,12 @@
             
             <div class="card card--light card--light-2 p-2 text-center">
                 <div class="clip-img--rounded">
+                    {% set idx = loop.index0 %}
+                    {% set rel_path='img/process/'%}
+                    {% set total_path = rel_path ~ idx + '.jpg'%}
+                    <img src="{{url_for('static', filename=total_path)}}" class="object-cover"/>
                 </div>
-                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2">
+                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2 relative z-2">
                     <span>0{{ loop.index }}</span>
                 </div>
                 <span class="heavy-weight medium-text">{{ item.text  }}</span>

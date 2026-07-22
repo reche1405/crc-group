@@ -62,7 +62,28 @@ class Project(SluggedModel):
             'project_title': self.title,
             'autoplay_interval': 4000  # or get from project settings
         }
-    
+    @classmethod
+    def to_home_json(cls):
+        projects = cls.query.limit(5).all()
+        project_list = []
+        for project in projects:
+            featured_media = ''
+            if project.featured_media:
+                featured_media = project.featured_media.get_absolute_url()
+            project_list.append(
+                {
+                    'title' : project.title,
+                    'slug': project.slug,
+                    'img_url': featured_media,
+
+                }
+            )
+        data = {
+            'items' : project_list,
+
+        }
+        return data
+
     
 
 class Orientation(enum.Enum):

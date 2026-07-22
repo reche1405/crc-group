@@ -17,42 +17,7 @@
                     <div class="card card--light card--light-2 p-6 sm-p-3 br-2">
                             <span class="small-text spaced-text heavy-weight caps">START YOUR JOUNEY</span>
                             <h3 class="semilarge-text heavy-weight lh-1">Let's Talk!</h3>
-                            <form action="">
-                                <div class="grid col-2 sm-col-1 my-3 g-3">
-
-                                    <div class="form-control br-2">
-                                        <input class="p-3" type="text" name="" placeholder="Full Name*" id="">
-                                    </div>
-                                     <div class="form-control br-2">
-                                        <input class="p-3" type="text" name=""  placeholder="Email*" id="">
-                                    </div>
-                                </div>
-                                <div class="grid col-2 sm-col-1 my-3 g-3">
-                                    <div class="form-control my-3 br-2">
-                                            <input class="p-3" type="text" placeholder="Tel*" name="" id="">
-                                    </div>
-                                    <div class="form-control my-3 br-2">
-                                        <select name="" class="p-3" id="">
-                                            <option>Service* </option>
-                                            <option value="Roof Conversion">Roof Conversion</option>
-                                            <option value="Garden Room">Garden Room</option>
-                                            <option value="Interior Decorating">Interior Decorating</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-control my-3">
-                                    <textarea placeholder="Message*" rows="4"></textarea>
-                                </div>
-                                <div class="grid col-3 sm-col-1">
-                                    <button class="btn btn-primary p-3 heavy-weight justify-between">
-                                        <span>Enquire</span>
-                                        <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </button>
-                                </div>
-
-                           </form>
+                            {% include "fragments/contact-form.html" %}
                         </div>
                 </main>
                 <aside>

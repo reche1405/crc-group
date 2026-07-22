@@ -12,17 +12,11 @@
     {% include "base/header.html" %}
     {% endblock header %}
     {% block hero %}
-    <div class="hero hero-short">
-        <div class="content flex col full-width full-height align-center text-center justify-center g-3 white-text">
+    
             {% set obj = project %}
-            {% include 'base/breadcrumbs.html' %}
-            <h1>{{project.title or 'Project Detail'}}</h1>
-            <div class="full-width">
-                <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
-            </div>
-            <p class="mx-auto w-ch50 smaller-text lh-2">{{ project.intro }}</p>
-        </div>
-    </div>
+            {% set hero_img = 'crc-van.png' %}
+        {% include "base/hero.html" %}
+           
     {% endblock hero %}
     {% block body %}
     <section>

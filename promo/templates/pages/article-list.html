@@ -26,6 +26,11 @@
                     {% for article in articles %}
                         <div class="card card--light card--light-2 p-3 br-3 mb-3">
                             <div class="post-img br-4">
+                                <img class="object-cover" src="{% if article.featured_image %}
+                                    {{article.featured_image.get_absolute_url()}}
+                                {% else %}
+                                    {{url_for('static', filename="/img/slides/blog-banner.jpg")}}
+                                {% endif %}"/>
                             </div>
                             <div class="px-2">
                                 <div class="flex g-2 py-4 align-center">

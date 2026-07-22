@@ -39,6 +39,7 @@ class Section(BaseSection):
     page = db.relationship('Page', backref="sections")
     media_id = db.Column(db.Integer, db.ForeignKey('media.id'), nullable=True)
     media = db.relationship('Media', backref='sections')
+    order = db.Column(db.Integer, nullable=True)
     
 
 
