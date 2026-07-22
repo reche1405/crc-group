@@ -39,7 +39,7 @@
                                     <span> <time datetime="{{article.date or '2026-05-23'}}">{{article.date or 'May 23, 2026'}}</time></span>
                                 </div>
 
-                                <span class="title-text heavy-weight">{{article.title}}</span>
+                                <span class="title-text heavy-weight">{{article.title|truncate(35)}}</span>
                                 <p class="py-3">{{article.abstract}}</p>
                                 <div class="grid col-4 sm-col-2 g-2 pb-3 pr-3"> 
                                     <a class="btn btn-transparent pt-3 pb-3 mt-3 justify-between" style href="{{article.get_absolute_url()}}">
