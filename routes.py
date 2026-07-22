@@ -1,4 +1,4 @@
-import math
+import math, datetime
 from flask import Blueprint, Response, request, session, current_app, redirect, url_for, flash, render_template, send_from_directory, abort
 from flask_login import current_user, login_user
 
@@ -18,9 +18,26 @@ from promo.models.policy import Policy
 
 from promo.models.media import Media
 from promo.extensions.login_manager import login_manager
+from promo.extensions.caching import cache
 from promo.forms.contact import ContactForm
 
 main = Blueprint("main", __name__)
+
+
+@main.context_processor
+def get_footer():
+    cached_links = cache.get('global_site_links')
+    
+    if cached_links is not None:
+        return cached_links
+    
+    extra_context = {
+        'policies' : Policy.get_all(),
+        'current_year' : datetime.datetime.now().year
+    }
+    cache.set('global_site_links', extra_context, timeout=86400 )
+    return extra_context
+
 
 @login_manager.user_loader
 def load_user(user_id):
