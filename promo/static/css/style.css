@@ -1595,6 +1595,9 @@ table.comparrison tr th {
     .header-logo-wrapper svg {
     width:120px;
 }
+.footer__content img {
+    margin-inline:auto;
+}
 
 }
 

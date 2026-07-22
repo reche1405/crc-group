@@ -15,14 +15,26 @@ const qtabHandlePress = (e) => {
     const para = qtabDetails.querySelector('p');
     const list = qtabDetails.querySelector('ul');
     const spans = list.querySelectorAll('span');
+    setActive(target.closest('.tab-selector'));
+
     if(title) {
-        title.innerText = target.innerText
+        title.innterText= '';
+        title.classList.remove('is-visible')
+        setTimeout(() => {
+            title.innerText = target.innerText
+            title.classList.add('is-visible')
+        }, 300)
     }
-    para.innerText = data.text;
+    para.innerText = '';
+    para.classList.remove('is-visible')
+    setTimeout(() => {
+        para.innerText = data.text;
+            para.classList.add('is-visible')
+        
+    })
     for (let i = 0; i < spans.length; i++) {
         spans[i].innerText = data.reasons[i];
     }
-    setActive(target.closest('.tab-selector'));
 
 }
 
