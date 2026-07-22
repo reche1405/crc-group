@@ -31,7 +31,7 @@ const qtabHandlePress = (e) => {
         para.innerText = data.text;
             para.classList.add('is-visible')
         
-    })
+    }, 400)
     for (let i = 0; i < spans.length; i++) {
         spans[i].innerText = data.reasons[i];
     }
