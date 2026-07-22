@@ -103,7 +103,7 @@ def contact():
             #TEMP: Print the form data
             print(f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}")
             msg = EmailMessage(
-                from_email=current_app['MAIL_USERNAME'],
+                from_email=current_app.config['MAIL_USERNAME'],
                 subject="New Website Contact Query",
                 body=f"New contact query from:\n{client_name}\nTel:\n{client_tel}\nResponse Email:\n{client_email}\n\nMessage\n\n{message_body}",
                 to=[current_app.config['INBOUND_MAIL']],
