@@ -32,7 +32,6 @@ def get_footer():
         return cached_links
     
     extra_context = {
-        'policies' : Policy.get_all(),
         'current_year' : datetime.datetime.now().year
     }
     cache.set('global_site_links', extra_context, timeout=86400 )
