@@ -18,7 +18,7 @@ def create_app():
          template_folder=os.path.join(BASE_DIR, 'promo', 'templates'),
         static_folder=os.path.join(BASE_DIR, 'promo', 'static'),
         static_url_path='/static'
-                )
+    )
     app.cli.add_command(create_admin)
 
 
@@ -27,18 +27,24 @@ def create_app():
     app.config['RECAPTCHA_PUBLIC_KEY'] = os.environ.get('RECAPTCHA_PUBLIC_KEY')
     app.config['RECAPTCHA_PRIVATE_KEY'] = os.environ.get('RECAPTCHA_SECRET_KEY')
 
+
     app.config['MAIL_SERVER'] = os.environ.get('MAIL_SERVER')
     app.config['MAIL_PORT'] = int(os.environ.get('MAIL_PORT'))
     app.config['MAIL_USE_TLS'] = os.environ.get('MAIL_USE_TLS') in ['True', 'true', '1', 1]
     app.config['MAIL_USE_SSL'] = os.environ.get('MAIL_USE_SSL') in ['True', 'true', '1', 1]
-    app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-    app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
     app.config['MAIL_DEFAULT_SENDER'] = os.environ.get('MAIL_DEFAULT_SENDER', 'contact@nmemusic.co.uk')
     app.config['INBOUND_MAIL'] = os.environ.get('INBOUND_MAIL')
     app.config['MAIL_DEBUG'] = True
     app_env = os.environ.get('FLASK_ENV')
     if app_env is None:
         app_env = 'production'
+
+    if app_env == 'development':
+        app.config['RECAPTCHA_ENABLED'] = False 
+    else:
+        app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+        app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+
 
    
     app.config['CACHE_TYPE'] = os.environ.get('CACHE_TYPE', 'SimpleCache')

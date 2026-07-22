@@ -17,11 +17,37 @@
     
         {% include 'base/header.html' %}
     {% endblock header %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="message-list">
+        {% for category, message in messages %}
+          <div class="message fade-in shadow-3 message-{{ category }}">
+              {{ message }}
+          </div>
+        {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
     {% block hero %}{% endblock hero %}
     {% block body %} {% endblock body%}
     {% include 'base/footer.html' %}
 
 </body>
+
+<script>
+    const messages = document.querySelectorAll('.message');
+    if (messages) {
+        messages.forEach(message => {
+            setTimeout(() => {
+                message.classList.add('fade-out');
+                setTimeout(() => {
+                    message.remove();
+                }, 1000);
+            }, 5000);
+        });
+    }
+</script>
 <script src="{{url_for('static', filename='js/nav.js')}}"></script>
 {% block extra_scripts %}
 

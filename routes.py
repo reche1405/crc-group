@@ -111,14 +111,17 @@ def contact():
             try:
                 
                 msg.send(fail_silently=False)
+
+                print("Message sent successfully, we will respond within 2 business days..")
                 flash("Message sent successfully, we will respond within 2 business days..", "success")
+                return redirect(url_for('main.home'))
             except Exception as e:
                 print(f"Email failed to send: {e}")
                 flash(f"Email failed  to send. {e}", "error")
                
         else: 
             print("Error parsing form data!!!!")
-            for error in form.errors.values():
+            for error in form.errors:
                 print(error)
             flash("There was an error parsing your message, please try again.", "error")
 
