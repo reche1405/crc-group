@@ -50,4 +50,5 @@ class ContactForm(Form):
             "placeholder" : "",
             "class" : "p-3 floating-label"
         })
+    
     recaptcha = RecaptchaField()
