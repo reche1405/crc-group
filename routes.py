@@ -369,6 +369,6 @@ def robots():
     content_str = """User-aagent: *
 Disallow: /admin/
 Disallow: /login/
-Sitemap: https://therokgroup.co.uk/sitemap.txt
+Sitemap: https://theconservatoryroofconverters.co.uk/sitemap.txt
 """
     return Response(content_str, mimetype="text/plain")
