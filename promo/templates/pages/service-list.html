@@ -13,7 +13,7 @@
     <section>
         <div class="content grid col-3 md-col-2 sm-col-1 g-5">
             {% for service in services  %}
-            <div class="card card--light card--light-1">
+            <div class="card card--light card--light-1 fade-up-item">
                 <div class="card-img--alt">
                     {% if service.featured_media %}
                     <img src="{{ service.featured_media.get_absolute_url() }}" class="object-cover" alt="{{service.title}}">
@@ -22,7 +22,7 @@
                     {% endif %} 
                 </div>
                 <div class="p-4">
-                    <h4>{{service.title}}</h4>
+                    <h4 class="fade-up-item">{{service.title}}</h4>
                     <div class="seperator seperator--darker my-3"></div>
                     <p class="py-3">{{service.short_desc}}</p>
                     <ul >
@@ -40,7 +40,7 @@
                         {% endfor %}
                         {% endif %}
                     </ul>
-                    <a class="btn btn-dark p-3 mt-3 justify-between" style href="{{service.get_absolute_url()}}">
+                    <a class="btn btn-dark p-3 mt-3 justify-between fade-up-item" style href="{{service.get_absolute_url()}}">
                         <span>Explore</span>
                         <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -153,14 +153,14 @@
             {% set process = section.list_for('service-process') %}
             {% for item in process.items %}
             
-            <div class="card card--light card--light-2 p-2 text-center">
+            <div class="card card--light card--light-2 p-2 text-center fade-up-item">
                 <div class="clip-img--rounded">
                     {% set idx = loop.index0 %}
                     {% set rel_path='img/process/'%}
                     {% set total_path = rel_path ~ idx + '.jpg'%}
                     <img src="{{url_for('static', filename=total_path)}}" class="object-cover"/>
                 </div>
-                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2 relative z-2">
+                <div class="card-circle grid justify-center align-center heavier-weight average-text p-2 relative z-2 ">
                     <span>0{{ loop.index }}</span>
                 </div>
                 <span class="heavy-weight medium-text">{{ item.text  }}</span>

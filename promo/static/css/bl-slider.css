@@ -1,10 +1,11 @@
 .bl-slide-wrapper {
             width: 100%;
             height: 800px;
-            background-color: blue;
+            background-color: rgb(122, 122, 124);
             padding: 0;
             position: relative;
             overflow: hidden; 
+
         }
 
         .bl-slide {
@@ -19,7 +20,11 @@
             justify-items: stretch;
             visibility: hidden; /* Hide non-active slides */
             filter: blur(30px);
-            transition: filter .9s ease-out;
+            transition: filter .9s ease-out, opacity .7s .2s ease-out;
+            @starting-style {
+                opacity:0;
+
+            }
         }
 
         .bl-slide.slide__current {
@@ -99,6 +104,7 @@
             overflow:clip;
             color:#fff;
             padding-bottom:8rem;
+            padding-inline:1rem;
         }
         .bl-slide-content-item {
             opacity:0;
@@ -148,7 +154,7 @@
 
         }
         .bl-slide-title {
-            font-size:4.5rem;
+            font-size:4rem;
             max-width:19ch;
             margin-top:0.5rem;
             margin-bottom:0.5rem;
@@ -203,10 +209,14 @@
                 padding:.75rem;
             }
             .bl-slide-content {
-                align-items: center;
+                align-items: start;
+                justify-content:end;
+                padding-top:8rem;
+                padding-bottom:2rem;
             }
             .bl-slide-title {
-                font-size:3.5rem;
+                font-size:3rem;
+                max-width:15ch;
             }
             .bl-slide-actions {
                 display:none;
@@ -219,5 +229,6 @@
             }
              .bl-slide-content {
                 align-items: start;
+                justify-content: end;
             }
         }

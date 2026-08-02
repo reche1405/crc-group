@@ -13,7 +13,7 @@
     <section>
         <div class="content grid col-3 md-col-2 sm-col-1 g-5">
             {% for project in projects  %}
-            <div class="card card--img ">
+            <div class="card card--img fade-up-item">
                 <div class="card-img">
                     {% if project.featured_media %}
                     <img src="{{project.featured_media.get_absolute_url()}}" class="object-cover"/>
@@ -24,7 +24,7 @@
                 </div>
                 <div>
                     <div class="card-body card-body--displace pt-3  px-3">
-                        <h4 class="light-weight medium-text pt-3">{{project.title}}</h4>
+                        <h4 class="light-weight medium-text pt-3 fade-left-item">{{project.title}}</h4>
                         <div class="grid col-2 g-2">
                             <div class="seperator seperator--darker my-3"></div>
                             <div></div>

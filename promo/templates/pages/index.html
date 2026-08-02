@@ -16,7 +16,7 @@
     {% block body %}
     <section class="">
         {% set section=page.section('welcome-section') %}
-        <div class="grid col-3 sm-col-1 content g-3 px-3">
+        <div class="grid col-3 sm-col-1 content g-3 px-3 py-6">
             {% set welcome_cards = section.list_for('welcome-cards')%}
             {% for item in welcome_cards.items %}
               {% set card = item %}
@@ -26,15 +26,15 @@
     </section>
     <section class="">
         {% set section=page.section("home-about") %}
-        <div class="grid content px-3 col-2--right md-col-1 sm-col-1">
+        <div class="grid content px-3 col-2--right md-col-1 sm-col-1 py-6">
             <div class="pr-6 md-hide sm-hide">
-                <div class="poster-img">
+                <div class="poster-img fade-up-item" style="--transition-duration: 1s;">
                     <img class="object-cover" src="{{ url_for('static', filename='img/placehold/0.jpg') }}" alt="{{section.title}}">
                 </div>
             </div>
             <div class="">
-                <span class="small-text spacedish-text heavy-weight caps">{{section.subtitle}}</span>
-                <h3 class="semilarge-text heavy-weight lh-1">{{section.title}}</h3>
+                <span class="small-text spacedish-text heavy-weight fade-up-item caps" style="--transition-delay: .45s">{{section.subtitle}}</span>
+                <h3 class="fade-left-item semilarge-text heavy-weight lh-1">{{section.title}}</h3>
                 <p class="py-3 w-ch60 normal-text lh-2">{{section.text}}</p>
                 <div class="grid col-2 sm-col-1 g-6 pt-3 align-end">
                     <div class="">
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                         </div> 
-                        <a href="{{url_for('main.about')}}" class="btn btn-primary btn-md py-3 mt-2 px-4">
+                        <a href="{{url_for('main.about')}}" class="btn btn-primary btn-md py-3 mt-2 px-4 fade-up-item">
                             <span>
                                 Discover More
                             </span>
@@ -102,11 +102,11 @@
     <section class="section--dark">
         {% set section=page.section('home-featured-projects') %}
         <div class="content text-center">
-            <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title }}</h3>
+            <span class="small-text spacedish-text  heavy-weight fade-left-item caps" style="--transition-delay: .45s">{{ section.subtitle }}</span>
+            <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-up-item">{{ section.title }} </h3>
             <div class="full-width overflow-x-auto py-4">
                 <div class="flex g3 align-center g-3 py-4 justify-center sm-justify-start">
-                    <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All ({{project_count}})</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Conservatories</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
+                    <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All ({{project_count}})</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center disabled">Conservatories</button><button class="disabled fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
                 </div>
             </div>
         </div>
@@ -118,26 +118,26 @@
 
                 <div class="flex col justify-end align-stretch content-left py-6">
                     
-                    <span class="text-left title-text heavy-weight pt-3 pb-1">STEEL TILES</span>
+                    <span class="text-left title-text heavy-weight pt-3 pb-1 fade-up-item">STEEL TILES</span>
                     <div class="grid col-2--left sm-col-1 g-2">
     
-                        <p class="smaller-text ">High-quality steel tiles come as standard, and are made from lightweight steel in a choice of colours.</p>
+                        <p class="smaller-text fade-left-item" style="--transition-delay: .2s; --transition-duration: 0.7s">High-quality steel tiles come as standard, and are made from lightweight steel in a choice of colours.</p>
                     </div>
                     <div class="overflow-x-auto">
                         <div class="flex g-3 full-width  pr-3 py-6 mb-3">
-                            <div class="tile-img"> 
+                            <div class="tile-img fade-up-item"> 
                                 <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/charcoal.jpg') }}" />
                             </div>
-                            <div class="tile-img"> 
+                            <div class="tile-img fade-up-item"> 
                                 <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/antique-red.jpg') }}" />
                             </div>
-                            <div class="tile-img"> 
+                            <div class="tile-img fade-up-item"> 
                                 <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/burnt-umber.jpg') }}" />
                             </div>
-                            <div class="tile-img"> 
+                            <div class="tile-img fade-up-item"> 
                                 <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/moss-green.jpg') }}" />
                             </div>
-                            <div class="tile-img"> 
+                            <div class="tile-img fade-up-item"> 
                                 <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/tiles/steel/ebony.jpg') }}" />
                             </div>
                         </div>
@@ -150,23 +150,23 @@
                     <img style="max-width:200px" src="/static/img/envirotile-logo.png"/>
                     <p class="heavy-weight lh-2 py-3" style="max-width:40ch">Smart sustainable roofing solutions  
 that protect homes and the planet</p>
-                    <span class="text-left title-text heavy-weight pt-3 pb-1">ENVIROTILE SLATE</span>
+                    <span class="text-left title-text heavy-weight fade-up-item pt-3 pb-1">ENVIROTILE SLATE</span>
                     <div class="grid col-2--left sm-col-1 g-2">
     
-                     <p class="smaller-text ">Recycled polymer lightweight roof tile with an interlocking 
+                     <p class="smaller-text fade-left-item" style="--transition-delay: .2s; --transition-duration: 0.7s">Recycled polymer lightweight roof tile with an interlocking 
                         system that makes your job easier.</p>
                     </div>
                     <div class="flex g-3 full-width  pr-3 py-6 mb-3">
-                        <div class="tile-img">
+                        <div class="tile-img fade-up-item">
                             <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/terracotta.jpg') }}" class="object-cover" alt="Teracotta Envirotile" title="Terracotta">
                         </div>
-                        <div class="tile-img">
+                        <div class="tile-img fade-up-item">
                             <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/dark-brown.jpg') }}" class="object-cover" alt="Dark Brown Envirotile" title="Dark Brown">
                         </div>
-                        <div class="tile-img">
+                        <div class="tile-img fade-up-item">
                             <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/slate-grey.jpg') }}" class="object-cover" alt="Slate Grey Envirotile" title="Slate Grey">
                         </div>
-                        <div class="tile-img">
+                        <div class="tile-img fade-up-item">
                             <img loading="lazy" src="{{ url_for('static', filename='img/tiles/envirotile/anthracite-grey.jpg') }}" class="object-cover" alt="Anthracite Grey Envirotile" title="Anthracite Grey">
                         </div>
                     </div>
@@ -175,35 +175,35 @@ that protect homes and the planet</p>
             <div class="section--grey full-height grid align-end">
 
                 <div class="flex col justify-end content-left py-6" >
-                    <span class="text-left title-text heavy-weight pt-3 pb-1">COMPOSITE SLATE TILES</span>
+                    <span class="text-left title-text heavy-weight fade-up-item pt-3 pb-1">COMPOSITE SLATE TILES</span>
                     <div class="grid col-2--left sm-col-1 g-2">
 
-                        <p class="smaller-text ">Made from a recyclable mix of limestone and 
+                        <p class="smaller-text fade-left-item" style="--transition-delay: .2s; --transition-duration: 0.7s">Made from a recyclable mix of limestone and 
                             polypropylene, composite tiles offer traditional looks 
                             without risk of shattering, fading, warping or cracking.
                         </p>
                     </div>
                     <div class="overflow-x-auto">
                         <div class="flex flex-wrap g-3  pr-3 py-3">
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/brick-red.jpg') }}" class="object-cover" alt="Brick Red Composite Tile" title="Brick Red">
                             </div>
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/pewter-grey.jpg') }}" class="object-cover" alt="Pewter Grey Composite Tile" title="Pewter Grey">
                             </div>
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/stone-black.jpg') }}" class="object-cover" alt="Stone Black Composite Tile" title="Stone Black">
 
                             </div>
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/chestnut.jpg') }}" class="object-cover" alt="Chestnut Composite Tile" title="Chestnut">
 
                             </div>
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/plum.jpg') }}" class="object-cover" alt="Plum Composite Tile " title="Plum">
 
                             </div>
-                            <div class="tile-img">
+                            <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/red-rock.jpg') }}" class="object-cover" alt="Red Rock Composite Tile" title="Red Rock">
 
                             </div>
@@ -215,19 +215,19 @@ that protect homes and the planet</p>
             <div class="section--dark full-height grid align-end">
 
                 <div class="flex col justify-end content-right py-6" >
-                   <span class="text-left title-text heavy-weight py-3">SLATESKIN GRP SHEET TILES</span>
+                   <span class="text-left title-text heavy-weight py-3 fade-up-item">SLATESKIN GRP SHEET TILES</span>
                     <div class="grid col-2--left sm-col-1 g-2">
 
-                    <p class="smaller-text ">
+                    <p class="smaller-text fade-left-item" style="--transition-delay: .2s; --transition-duration: 0.4s">
                         The GRP sheet roof tile system that gives
                         a traditional slate-effect in half the time
                    </p>
                    </div>
                     <div class="flex g-3 full-width align-center  pr-3 pb-3 pt-6">
-                        <div class="tile-img">
+                        <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/slateskin/slate-grey.jpg') }}" class="object-cover" alt="">
                         </div>
-                        <div class="info">
+                        <div class="info fade-left-item" style="--transition-delay: .2s; --transition-duration: 0.7s">
                             <p class="w-ch40 smaller-text">Please note: All our SlateSkin sheets come from pref-cut ready to-fit sheets</p>
                         </div>
                     </div>

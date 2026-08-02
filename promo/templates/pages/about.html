@@ -13,9 +13,9 @@
         {% set section=page.section('about-the-company')%}
         <div class="grid content col-2 sm-col-1 g-6">
             <div>
-                <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title }}</h3>
-                <p class="py-4 lh-2 smaller-text">{{ section.text }}</p>
+                <span class="small-text spacedish-text  heavy-weight caps fade-left-item" style="--transition-delay: .45s">{{ section.subtitle }}</span>
+                <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-up-item">{{ section.title }}</h3>
+                <p class="py-4 lh-2 smaller-text fade-up-item">{{ section.text }}</p>
                 <div class="grid col-2 sm-col-1 md-col-2 py-3">
                     {% set about_list = section.list_for('about-intro') %}
                     {% for item in about_list.items %}
@@ -42,15 +42,15 @@
                         </div>
                     </div>
                     <div class="progress-container">
-                        <div style="--destination: {{item.subtext}}%" class="progress-progress"></div>
+                        <div style="--destination: {{item.subtext}}%; --transition-duration: 1.5s;" class="progress-progress"></div>
                     </div>
                 </div>
                 {% endfor %}
                 
             </div>
             <div class="px-5 pt-3 sm-hide">
-                <div class="poster-img">
-                        <img src="{{ url_for('static', filename='img/inspection.png')}}" class="object-cover" alt="">
+                <div class="poster-img fade-up-item" style="--transition-duration: 1s;">
+                        <img src="{{ url_for('static', filename='img/inspection.png')}}" class="object-cover " alt="">
                 </div>
             </div>
         </div>
@@ -66,12 +66,12 @@
     <section class="section--offwhite">
         <div class="content text-center mt-3">
             <span class="small-text spacedish-text  heavy-weight caps">OUR CLIENT REVIEWS</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight">What Our Clients Have To Say</h3>
-                <p class="py-4 lh-2 smaller-text mx-auto">Don't listen to us, here's some feedback from our happy customers...</p>
+                <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-left-item">What Our Clients Have To Say</h3>
+                <p class="py-4 lh-2 smaller-text mx-auto fade-up-item">Don't listen to us, here's some feedback from our happy customers...</p>
                 <div class="reviews-viewbox mb-6">
                     <div class="reviews-scrollbox">
                         {% for review in reviews %}
-                        <div class="card card--light card--light-1 p-5 fg-0 fs-0">
+                        <div class="card card--light card--light-1 p-5 fg-0 fs-0 fade-up-item">
                             <div class="flex justify-between align-center full-width pb-3 review-card-header">
                                 <div class="flex align-center g-3">
                                     <div class="review-icon-block"></div>

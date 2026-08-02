@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
 </head>
 <body>
+    <div class="app-entry">
     {% block pre_header %} {% endblock pre_header %}
     {% block header %} 
     
@@ -32,7 +33,7 @@
     {% block hero %}{% endblock hero %}
     {% block body %} {% endblock body%}
     {% include 'base/footer.html' %}
-
+    </div>
 </body>
 
 <script>
@@ -52,4 +53,5 @@
 {% block extra_scripts %}
 
 {% endblock extra_scripts %}
+<script src="{{url_for('static', filename='js/staggered-visibility.js')}}"></script>
 </html>

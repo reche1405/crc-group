@@ -118,8 +118,13 @@
     --space-6: 3rem;    /* 48px */
     --section-pad: 4rem;
     scrollbar-width: thin;
+
 }
 
+.app-entry {
+    max-width:100%; 
+    overflow-x:clip;
+}
 
 /* ============================================== MARGINS AND PADDINGS ========================================== */
 /* All Sides */
@@ -579,6 +584,13 @@ header.floating-header {
     left:0; 
     right:0; 
     padding:1rem;
+    opacity:1;
+    transform:translateY(0);
+    transition: .75s .5s ease;
+    @starting-style {
+        opacity:0; 
+        transform: translateY(-100%);
+    }
 }
 .desktop-nav {
     width:100%; 
@@ -949,9 +961,14 @@ button:disabled {
     position: relative;
 }
 .progress-progress {
-    width: var(--destination, 0);
     background-color: var(--clr-primary);
     height:100%;
+    transition: width .5s ease-out;
+    width:0px;
+
+}
+.progress-progress.is-visible {
+    width: var(--destination, 0);
 }
 
 
@@ -1088,6 +1105,7 @@ button:disabled {
     width:85px;
     border-radius: 50%;
     margin-bottom: -10%;
+    box-shadow:3px 3px 12px 1px rgba(0,0,0,0.05);
 }
 
 
@@ -1437,16 +1455,34 @@ table.comparrison tr th {
 
 .clip-item {
     opacity:0;
-    transform:translateX(50%);
     clip-path:inset(0 100% 0 0);
     transition: opacity .45s var(--transition-delay, .5s) ease-out,
      transform .45s var(--transition-delay, .5s) ease-out,
       clip-path .3s var(--transition-delay, .5s) ease-out;
+    &.clip-item-x {
+
+        transform:translateX(50%);
+         @starting-style {
+            opacity:0;
+            clip-path:inset(0 100% 0 0);
+            transform:translateX(50%);
+        }
+    }
+    &.clip-item-y {
+        transform:translateY(50%);
+        @starting-style {
+            opacity:0;
+            clip-path:inset(0 100% 0 0);
+            transform:translateY(50%);
+            
+        }
+
+    }
 
 }
 .fade-up-item, .fade-left-item {
     opacity:0;
-    transition: opacity var(--transition-duration, .45s) var(--transition-delay, .5s) ease-out, transform var(--transition-duration, .45s) var(--transition-delay, .5s) ease-out;
+    transition: opacity var(--transition-duration, .55s) var(--transition-delay, 0s) ease-out, transform var(--transition-duration, .55s) var(--transition-delay, 0s) ease-out;
     
 }
 .fade-up-item {
@@ -1482,13 +1518,19 @@ table.comparrison tr th {
 
 .clip-item.is-visible {
     opacity: 1; 
-    transform:translateX(0);
     clip-path:inset(0 0 0 0);
-    @starting-style {
-        opacity:0;
-        transform:translateX(50%);
-        clip-path:inset(0 100% 0 0);
-    }
+    
+    
+}
+
+.clip-item.clip-item-x.is-visible {
+    transform:translateX(0);
+    
+
+}
+.clip-item.clip-item-y.is-visible {
+    transform:translateY(0);
+    
 
 }
 

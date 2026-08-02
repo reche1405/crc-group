@@ -10,7 +10,7 @@
     <div class="overlay"></div>
     <div class="content relative flex col full-width full-height align-center text-center justify-center g-3 white-text z-3">
         {% include 'base/breadcrumbs.html' %}
-        <h1 class="clip-item is-visible" style="--transition-delay:.3s">{% if page %} {{page.body_title}} {% elif obj %}{{obj.title}} {% else %} Page {% endif %}</h1>
+        <h1 class="clip-item clip-item-x is-visible" style="--transition-delay:.3s">{% if page %} {{page.body_title}} {% elif obj %}{{obj.title}} {% else %} Page {% endif %}</h1>
         <div class="full-width">
             <div class="seperator seperator--highlight seperator--center mt-3 mb-3 mx-auto w-ch60 "></div>
         </div>
