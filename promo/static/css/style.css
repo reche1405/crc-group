@@ -1171,7 +1171,7 @@ button:disabled {
     grid-template-columns: 1fr;
     align-items: end;
     justify-content: stretch;
-    border-radius: .75rem;
+    border-radius: var(--space-2);
     overflow: clip;
 }
 .card.card--img .card-body {
