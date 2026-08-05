@@ -236,19 +236,19 @@ that protect homes and the planet</p>
     </section>
     <section>
         {% set section = page.section("home-compatible") %}
-        <div class="content text-center">
-            <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
-            <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text">{{ section.title  }}</h3>
+        <div class="content text-center pb-3">
+            <span class="small-text spacedish-text  heavy-weight caps pb-1">{{ section.subtitle }}</span>
+            <h3 class="semilarge-text mx-auto lh-1  light-weight pb-3 spaced-text">{{ section.title  }}</h3>
         </div>
         <div class="">
             
         </div>
-        <div class="full width overflow-x-auto">
-            <div class="flex g-3 py-3">
+        <div class="full width overflow-x-auto" style=" scrollbar-color:transparent transparent !important; scrollbar-width: none !important;">
+            <div class="flex g-2 py-3 relative" style="padding-left: 25vw;">
                 {% set con_shapes = section.list_for('con-shapes') %}
                 {% for item in con_shapes.items  %}
                     {% set card = item %}
-                    <div class="fs-0">
+                    <div class="fs-0 full-height grid align-stretch justify-stretch" style="align-self:stretch; justify-self:stretch; align-items:stretch; justify-items:stretch;">
                         {% include 'fragments/cards/light-card-long.html' %}
                     </div>
                 {% endfor %}
@@ -256,13 +256,22 @@ that protect homes and the planet</p>
         </div>
 
     </section>
-    <section>
-        <div class="content grid col-3 md-col-2 sm-col-1 g-5 justify-end">
-            <div class="span-2 md-span-1 sm-hide"></div>
-            <div>
-                <span class="small-text spacedish-text heavy-weight caps">OUR SERVICE AREAS</span>
-                <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text">Locations</h3>
-                <p class="py-3 lh-2 small-text">We provide our services across the UK, with a focus on the South East and London areas. Our team is dedicated to delivering high-quality work and exceptional customer service to all our clients.</p>
+    <section class="no-pad relative">
+        <img loading="lazy" src="{{ url_for('static', filename='img/placehold/0.jpg') }}" class="object-cover" alt="">
+        <div style="position:absolute; z-index:6; top:0; left:0; width:100%; height:100%; background:linear-gradient(to right, rgba(0,0,0, 0), var(--clr-grey-darker));"></div>
+
+        <div class=" grid col-3 md-col-2 sm-col-1 relative justify-end" style="min-height:600px; z-index:10;">
+            <div class="span-2 md-span-1 sm-hide relative">
+            </div>
+            <div class=" py-6 px-4" >
+                <span class="small-text spacedish-text heavy-weight caps pt-6  pb-1 white-text">OUR SERVICE AREAS</span>
+                <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text white-text">Locations</h3>
+                <p class="py-6 lh-2 small-text white-text">We provide conservatory roof conversions accross the South East and London areas. Our team is dedicated to delivering high-quality work and exceptional customer service to all our clients.</p>
+                <div class="grid col-3 sm-col-2 cg-3 rg-5 smaller-text">
+                    {% for location in locations %}
+                    <span class="highlight-text">{{ location.title }}</span>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </section>

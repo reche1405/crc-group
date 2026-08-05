@@ -109,19 +109,32 @@
 
                         <a class="btn btn-highlight p-3 my-3 heavy-weight btn-md" href="{{ url_for('main.project_list') }}">All Projects</a>
                     </div>
+                </div>
+                    {% for project in service.projects %}
+                <div class=" section--grey relative ">
+                    {% if project.featured_media %}
+                    {% set thumbnail_url = project.featured_media.get_absolute_url() %}
+                    {% else %}
+
+
+                    {% set thumbnail_url = url_for('static', filename='img/placehold/roof-conversions-service.jpeg') %}
+                    {% endif %}
+                    <img src="{{ thumbnail_url }}" alt="{{project.title}}" class="object-cover">
+                    <div class="box-overlay white-text flex p-3 col justify-end full-height">
+
+
+                        <span class="medium-text heavy-weight display-block pt-6 mt-3">{{ project.title }}</span>
+                        <p>{{ project.short_desc }}</p>
+                        <a class="btn btn-transparent py-3 btn-md my-3 heavy-weight" href="{{ url_for('main.project_detail', slug=project.slug) }}">View Project</a>
+                
                     </div>
-                {% for project in service.projects %}
-                <div class="px-5 py-3 section--grey flex col full-height full-width justify-end">
-                    <span class="medium-text heavy-weight display-block">{{ project.title }}</span>
-                    <p>{{ project.short_desc }}</p>
-                    <a class="btn btn-light p-3 btn-md my-3 heavy-weight" href="{{ url_for('main.project_detail', slug=project.slug) }}">View Project</a>
                 </div>
-                {% endfor %}
-                {% set extra_squares = 3 - (service.projects | length % 3) %}
-                {% for i in range(extra_squares) %}
-                <div class="p-5 section--offwhite">
-                </div>
-                {% endfor %}
+                    {% endfor %}
+                    {% set extra_squares = 3 - (service.projects | length % 3) %}
+                    {% for i in range(extra_squares) %}
+                    <div class="p-5 section--offwhite">
+                    </div>
+                    {% endfor %}
             </div>
 
         </section>
@@ -138,7 +151,7 @@
             </div>
             <div class="relative">
                 <img src="{{url_for('static', filename='img/placehold/0.jpg')}}" class="object-cover z-1"/>
-                <div style="max-width:600px; position:relative; min-height:700px; z-index:2;" class="relative py-5 z-2 section--highlight grid align-center">
+                <div style="max-width:600px; position:relative; min-height:700px; z-index:2; " class="relative py-5 px-4 z-2 section--highlight grid align-center">
                     {% set form_action=url_for('main.contact')%}
                     {% include "fragments/contact-form.html" %}
                 </div>

@@ -1,4 +1,4 @@
-<form method="POST" action="{% if form_action %}{{form_action}}{% endif %}" class="px-3 relative">
+<form method="POST" action="{% if form_action %}{{form_action}}{% endif %}" class="relative">
     {{form.csrf_token }}
     <div class="grid col-2 g-3 pb-3">
         <div class="form-control">
@@ -22,7 +22,7 @@
     {{ form.recaptcha() }}
 
         <p class="small-text pt-2">Interested in learning more? Fill out the form and we'll get back to you soon!</p>
-    <div class="grid col-2 g-6 mt-3">
+    <div class="grid col-2 sm-col-1 g-6 mt-3">
         <div>
             
             <button role="submit" class="cta primary">ENQUIRE NOW</button>

@@ -45,6 +45,18 @@
             <main class="span-2 sm-col-1">
                 <div class="article-body">
                     {{article.body_one|safe}}
+
+                    <p style="font-size:1rem; line-height:1.5; padding:1.5rem; background-color:#444444; border-left:6px solid var(--clr-primary); margin-bottom:2rem; color:#ffffff; border-radius:8px;">
+                        {% if article.body_two %}
+                        {{ article.body_two|safe}}
+
+ ``                       {% else %}
+                            <strong>Don't wait to transform your home.</strong> Contact our specialist team of conservatory roof converters today to discuss your project and get a free, no-obligation quote. Let us help you unlock the full potential of your conservatory this summer.</p>
+                        
+                        {% endif %}
+
+                    <p style="text-align:center;">
+                        <a href="{{url_for('main.contact')}}" style="background-color:var(--clr-primary); color:var(--clr-ink); padding:1.25rem; text-decoration:none; font-weight:bold; border-radius:7px; font-size:1.1em;">{{ article.body_three or 'Get Your Free Quote Now' }}</a></p>
                 </div>
 
             </main>

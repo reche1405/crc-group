@@ -87,12 +87,14 @@ def home():
             print(len(_list.items))
     services = Service.get_home()
     projects_data = Project.to_home_json()
+    locations = Location.get_all()
     project_count = len(projects_data['items'])
     context = {
         'page' : page,
         'services' : services,
         'projects_data' : projects_data,
-        'project_count' : project_count
+        'project_count' : project_count,
+        'locations' : locations
         
     }
     return render_template('pages/index.html', **context)
