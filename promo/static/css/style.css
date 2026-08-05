@@ -81,18 +81,9 @@
 /* LEMON MILK – Light */
 @font-face {
     font-family: "Lemon Milk";
-    src: url("../fonts/lemonmilk/LemonMilkLight.ttf") format("truetype");
+    src: url("../fonts/lemonmilk/LemonMilklight.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
-    font-display: swap;
-}
-
-/* LEMON MILK – Light Italic */
-@font-face {
-    font-family: "Lemon Milk";
-    src: url("../fonts/lemonmilk/LemonMilkLightItalic.ttf") format("truetype");
-    font-weight: 300;
-    font-style: italic;
     font-display: swap;
 }
 
