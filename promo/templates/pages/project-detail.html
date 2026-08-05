@@ -140,7 +140,7 @@
                     <div class="flex g-3 py-3">
                         {% for o_project in other_projects %}
                             <a href="{{ o_project.get_absolute_url() }}" class="my-3 heavy-weight small-text fs-0">
-                                <div style="width:200px; height:200px; border-radius:.25rem; overflow:hidden; margin-bottom:.5rem;">
+                                <div style="width:200px; height:200px; border-radius:.25rem; overflow:hidden; position:relative; margin-bottom:.5rem;">
                                     {% if o_project.featured_media %}
                                     {% set thumbnail_url = o_project.featured_media.get_absolute_url() %}
                                     {% else %}
@@ -148,8 +148,8 @@
 
                                     {% set thumbnail_url = url_for('static', filename='img/placehold/roof-conversions-service.jpeg') %}
                                     {% endif %}
-                                    <img src="{{ thumbnail_url }}" alt="{{o_project.title}}" style="width:100%; height:100%; object-fit:cover;">
-                                    <div class="z-6">
+                                    <img src="{{ thumbnail_url }}" alt="{{o_project.title}}" style="width:100%; height:100%; position:absolute; z-index:1; object-fit:cover;">
+                                    <div class="relative z-2">
                                         {{o_project.title}}
                                     </div>
                                 </div>

@@ -94,7 +94,7 @@ def create_app():
         admin.add_view(BaseSecureView(Section, db, category='Static'))
         admin.add_view(BaseSecureView(List, db, category='Static'))
         admin.add_view(BaseSecureView(ListItem, db, category='Static'))
-        admin.add_view(SlugifyAdminView(Article, db, category='Blog'))
+        admin.add_view(ArticleAdminView(Article, db, category='Blog'))
         admin.add_view(BaseSecureView(BlogCategory, db, category='Blog'))
         admin.add_view(SlugifyAdminView(Location, db, category='Static'))
         admin.add_view(BaseSecureView(Area, db, category='Static'))

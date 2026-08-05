@@ -240,14 +240,31 @@ that protect homes and the planet</p>
             <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
             <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text">{{ section.title  }}</h3>
         </div>
-        <div class="grid col-6 md-col-3 sm-col-1 mt-3 pt-3">
-            {% set con_shapes = section.list_for('con-shapes') %}
-            {% for item in con_shapes.items  %}
-                {% set card = item %}
-                {% include 'fragments/cards/light-card-long.html' %}
-            {% endfor %}
+        <div class="">
+            
+        </div>
+        <div class="full width overflow-x-auto">
+            <div class="flex g-3 py-3">
+                {% set con_shapes = section.list_for('con-shapes') %}
+                {% for item in con_shapes.items  %}
+                    {% set card = item %}
+                    <div class="fs-0">
+                        {% include 'fragments/cards/light-card-long.html' %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
+    </section>
+    <section>
+        <div class="content grid col-3 md-col-2 sm-col-1 g-5 justify-end">
+            <div class="span-2 md-span-1 sm-hide"></div>
+            <div>
+                <span class="small-text spacedish-text heavy-weight caps">OUR SERVICE AREAS</span>
+                <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text">Locations</h3>
+                <p class="py-3 lh-2 small-text">We provide our services across the UK, with a focus on the South East and London areas. Our team is dedicated to delivering high-quality work and exceptional customer service to all our clients.</p>
+            </div>
+        </div>
     </section>
       
     {% endblock body %}

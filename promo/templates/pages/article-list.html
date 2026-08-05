@@ -24,25 +24,27 @@
             <div class="content grid col-3 md-col-2 sm-col-1 g-4 sm-g-3">
                 <main class="span-2 grid col-2 g-3 sm-col-1">
                     {% for article in articles %}
-                        <div class="card card--light card--light-2 p-3 br-3">
-                            <div class="post-img br-4">
+                        <div class="card card--light card--light-2 br-2 shadow-3 overflow-clip ">
+                            <div class="post-img ">
                                 <img class="object-cover" src="{% if article.featured_image %}
                                     {{article.featured_image.get_absolute_url()}}
                                 {% else %}
                                     {{url_for('static', filename="/img/slides/blog-banner.jpg")}}
                                 {% endif %}"/>
                             </div>
-                            <div class="px-2">
-                                <div class="flex g-2 py-4 align-center">
+                            <div class="p-3">
+                                <div class="flex g-2 pb-4 small-text align-center">
                                     <span>By: <span class="heavy-weight">{{article.author or 'Joe Bloggs'}}</span></span>
                                     <span class="small-square small-square--primary"></span>
-                                    <span> <time datetime="{{article.date or '2026-05-23'}}">{{article.date or 'May 23, 2026'}}</time></span>
+                                    <span> <time datetime="{{article.date or '2026-05-23'}}">{{article.published_date.strftime("%d %b, %Y") or 'May 23, 2026'}}</time></span>
                                 </div>
 
-                                <span class="title-text heavy-weight">{{article.title|truncate(35)}}</span>
-                                <p class="py-3">{{article.abstract}}</p>
-                                <div class="grid col-4 sm-col-2 g-2 pb-3 pr-3"> 
-                                    <a class="btn btn-transparent pt-3 pb-3 mt-3 justify-between" style href="{{article.get_absolute_url()}}">
+                                <span class="average-text heavy-weight">{{article.title|truncate(35)}}</span>
+                                <p class="pb-1 pt-3 lh-2">{{article.abstract|truncate(80)}}</p>
+                                <div class="grid   p-3"> 
+                                    <a class="btn btn-dark p-3 flex mt-3 justify-between" style href="{{article.get_absolute_url()}}"
+                                        title="Read {{article.title|truncate(100)}}"
+                                    >
                                         <span class="heavy-weight medium-text">Read</span>
                                         <svg width="22px" height="22px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M7 17L17 7M17 7H7M17 7V17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>

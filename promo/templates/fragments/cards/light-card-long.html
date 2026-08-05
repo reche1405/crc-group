@@ -1,10 +1,12 @@
-<div class="card card--light card--light-1 p-3 br-1">
-    <div class="card-icon my-5 mx-auto">
-        {% if card.svg %}
+<div class="card card--light card--light-1 shadow-2 relative p-3 br-1">
+    <div class="card-icon my-5 mx-auto" style="max-width:50%">
+        {% if card.media %}
           
+            <img src="{{card.media}}" alt="{{card.title or card.text or 'Lorem Ipsom Dolar'}}" class="img-fluid">
+        {% elif card.svg %}
             {{card.svg|safe}}
         {% endif %}
     </div>
-    <h4>{{card.title or card.text or 'Lorem Ipsom Dolar'}}</h4>
-    <p class="smaller-text lh-2 py-3">{{card.subtext or card.description or 'An even longer lorem ipsum dolar amet' }}</p>
+    <h4 class="light-weight">{{card.title or card.text or 'Lorem Ipsom Dolar'}}</h4>
+    <p class="small-text lh-2 py-3 heavy-weight w-ch40">{{card.subtext or card.description or 'An even longer lorem ipsum dolar amet' }}</p>
 </div>

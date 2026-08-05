@@ -1,4 +1,4 @@
 from .base_secure import SlugifyAdminView
 class ArticleAdminView(SlugifyAdminView):
-    column_exclude_list = ['body_one', 'body_two', 'body_three', 'abstract', 'subtitle', 'created_at', 'updated_at']
+    column_exclude_list = ['body_one', 'body_two', 'body_three', 'abstract', 'subtitle', 'created_at', 'updated_at', 'parent_route', 'parent_title']
     form_excluded_columns = ['slug']

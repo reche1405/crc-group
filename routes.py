@@ -273,8 +273,10 @@ def article_list():
 def article_detail(slug):
     article = Article.get_by_slug(slug)
     if not article: return abort(404)
+    other_articles = Article.get_all()
     context = {
-        'article': article
+        'article': article,
+        'other_articles' : other_articles
     }
     return render_template('pages/article-detail.html', **context)
 

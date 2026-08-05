@@ -12,14 +12,14 @@
 
         <div class="grid content col-2--left sm-col-1 g-3 full-width full-height align-center">
             <div >
-                <h1 class="title x-large-text lh-1">{{ article.title or 'Service Detail'}}</h1>
+                <h1 class="title large-text lh-1">{{ article.title or 'Service Detail'}}</h1>
             </div>
             <div>
                 <p class="smaller-text lh-2">{{ article.abstract }}</p>
                 <div class="flex g-4 smaller-text spacedish text my-3">
 
                     <span>{{article.author}} </span>
-                    <span>{{article.published_date.strftime("%d %b, %Y")  }} </span>
+                    <span>{{article.published_date.strftime("%d %b, %Y") or 'May 23, 2026' }} </span>
                 </div>
             </div>
         </div>
@@ -31,14 +31,48 @@
     {% endblock hero%}
 
     {% block body %}
-    <div class="blog-banner">
-        <span>{{article.author}}</span>
-    </div>
-    <div class="grid col-3 sm-col-1">
+    <section class="no-pad section--dark p-2">
+        <div class="content overflow-x-auto">
+            <div class="flex g-3">
+                <span>{{article.author}}</span>
+                <span>{{article.published_date.strftime("%d %b, %Y") or 'May 23, 2026' }} </span>
+            </div>
 
-        <div class="span-2">
+    </section>
+    <section>
+        <div class="grid col-3 md-col-2 sm-col-1">
 
+            <main class="span-2 sm-col-1">
+                <div class="article-body">
+                    {{article.body_one|safe}}
+                </div>
+
+            </main>
+            <aside class="full-height px-3 " >
+                <div class="sticky-top" style="top:5rem;">
+                <div class="card card--light card--light-1 shadow-2 p-3 br-1">
+                    <h3 class="light-weight spacedish-text">More Articles</h3>
+                    <div class="grid col-1 g-2 py-3">
+                        {% for other_article in other_articles %}
+                        <div>
+                            <a href="{{other_article.get_absolute_url()}}" class="flex  align-start g-2">
+                                <div class="" style="width:50px; height:50px; border-radius:.25rem; position:relative; overflow:hidden;">
+                                    {% if other_article.featured_media %}
+                                    <img src="{{other_article.featured_media.get_absolute_url()}}" alt="{{other_article.title}}" class="object-cover" style="width:100%; height:100%;">
+                                    {% else %}
+                                    <img src="{{url_for('static', filename='img/placehold/roof-conversions-service.jpeg' )}}" alt="{{other_article.title}}" class="object-cover" style="width:100%; height:100%;">
+                                    {% endif %}
+                                </div>
+                                <div class="px-2">
+                                    <span class="small-text heavy-weight">{{other_article.title}}</span>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
 
         </div>
-    </div>
+    </section>
     {% endblock body %}

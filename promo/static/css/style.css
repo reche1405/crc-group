@@ -1029,6 +1029,8 @@ button:disabled {
 .overflow-x-auto {
     overflow-x: auto;
     max-width:100%;
+    scrollbar-width: thin;
+    scrollbar-color: var(--clr-primary) transparent;
 }
 .overflow-clip {
     overflow:clip;
@@ -1291,7 +1293,23 @@ button:disabled {
 .relative {
     position: relative;
 }
+.sticky-top {
+    position:sticky;
+}
 
+
+.article-body {
+    padding:1rem;
+    max-width: 800px;
+    margin-inline:auto;
+    & h1{
+        padding-block:2rem;
+    }
+    & h2, h3, h4, p, li {
+        padding-block:1rem;
+    }
+   
+}
 
 .z-2 {
     z-index:2;
