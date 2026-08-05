@@ -161,7 +161,7 @@ section_data = [
         'page_id': 1, 
         'title': 'Expert Exterior Space Development',
         'subtitle': 'ABOUT CRC GROUP',
-        'text': "We provide thermal regulation for your outside spaces so that you can enjoy them year round. Keep optimal lighting and temprature, while maximising value on your property.",
+        'text': "Replace your old roof with a fully insulated warm roof, we transform your unused conservatory into a comfortable, energy-efficient living space you can enjoy all year round. ",
         'tag' : 'home-about'
     }, 
     {
@@ -180,7 +180,7 @@ section_data = [
         'page_id' : 2, 
         'title' : 'The People Behind the Company',
         'subtitle' : 'ABOUT CRC',
-        'text' : "Construction is the process of planning, designing, and building infrastructure such as residential homes, commercial buildings, roads, bridges, and industrial facilities. It involves the coordination of skilled labor.",
+        'text' : "We provide thermal regulation for your outside spaces so that you can enjoy them year round. Keep optimal lighting and temperature, while maximising value on your property.",
         'tag' : 'about-the-company'
     },
     {

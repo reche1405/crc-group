@@ -74,6 +74,66 @@
   font-display: swap;
 }
 
+
+
+
+
+/* LEMON MILK – Light */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("../fonts/lemonmilk/LemonMilkLight.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* LEMON MILK – Light Italic */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("../fonts/lemonmilk/LemonMilkLightItalic.ttf") format("truetype");
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+/* LEMON MILK – Regular */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("../fonts/lemonmilk/LemonMilk.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* LEMON MILK – Regular Italic */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("../fonts/lemonmilk/LemonMilkitalic.ttf") format("truetype");
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+}
+
+
+/* LEMON MILK – Bold */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("../fonts/lemonmilk/LemonMilkbold.ttf") format("truetype");
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* LEMON MILK – Bold Italic */
+@font-face {
+    font-family: "Lemon Milk";
+    src: url("/lemonmilk/LemonMilkbolditalic.ttf") format("truetype");
+    font-weight: 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+
 :root {
     --ff-sans: 'Poppins', system-ui, sans-serif;
     --fs-base: 1rem;
@@ -92,7 +152,7 @@
     --tablet-break: 789px;
     --phone-break: 530px;  
     
-    --clr-background: rgb(255, 255, 255);
+    --clr-background: rgb(244, 244, 244);
     --clr-ink: rgb(12,12,12);
     --clr-primary: rgb(255, 216, 45);
     /*--clr-primary: #ffd82d; */
@@ -118,7 +178,8 @@
     --space-6: 3rem;    /* 48px */
     --section-pad: 4rem;
     scrollbar-width: thin;
-
+    
+    background-color: var(--clr-background);
 }
 
 .app-entry {
@@ -250,6 +311,20 @@
     .g-4 {gap:var(--space-4);}
     .g-5 {gap:var(--space-5);}
     .g-6 {gap:var(--space-6);}
+
+    .cg-1 {column-gap:var(--space-1);}
+    .cg-2 {column-gap:var(--space-2);}
+    .cg-3 {column-gap:var(--space-3);}
+    .cg-4 {column-gap:var(--space-4);}
+    .cg-5 {column-gap:var(--space-5);}
+    .cg-6 {column-gap:var(--space-6);}
+
+    .rg-1 {row-gap:var(--space-1);}
+    .rg-2 {row-gap:var(--space-2);}
+    .rg-3 {row-gap:var(--space-3);}
+    .rg-4 {row-gap:var(--space-4);}
+    .rg-5 {row-gap:var(--space-5);}
+    .rg-6 {row-gap:var(--space-6);}
     
     .br-1 {border-radius:var(--space-1);}
     .br-2 {border-radius:var(--space-2);}
@@ -291,8 +366,21 @@
         z-index:3;
     }
 
+    .shadow-2 {
+        box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.0125);
+    }
+
+    .shadow-3 {
+        box-shadow: 3px 3px 24px 2px rgba(0,0,0,0.125);
+    }
+
     /* ============================================== END MARGINS AND PADDINGS ========================================== */
 
+
+main {
+    max-width:100%; 
+    position:relative;
+}
 
 
 .display-text {
@@ -480,12 +568,20 @@
 
 }
 
+h1,h2,h3,h4,h5,h6 {
+    font-family:'Lemon Milk';
+}
+
 h1,h2,h3,h4,h5,h6,section, div, table, ul, li, p {
     margin:0;
     padding:0;
 }
-section:not(.no-pad) {
+section:not(.no-pad, .small-pad) {
     padding-block:var(--section-pad);
+}
+section.small-pad {
+    padding-block:calc(var(--section-pad) / 2);
+
 }
 section.section--dark, div.section--dark {
     background-color: var(--clr-grey-darker);
@@ -622,11 +718,11 @@ header.floating-header .desktop-nav {
 .header-logo-wrapper a {
     cursor:pointer;
 }
-.header-logo-wrapper svg {
-    width:180px;
+.header-logo-wrapper svg, .header-logo-wrapper img {
+    width:220px;
 }
 .header-logo {
-    max-width:100px;
+    max-width:120px;
 }
 
 .desktop-nav button#nav-drawer-toggle {
@@ -714,6 +810,12 @@ header.header-dark .desktop-nav button#nav-drawer-toggle {
         }
     }
     
+}
+.nav-drawer__logo {
+    padding-inline:2rem;
+    & img {
+        max-width:150px;
+    }
 }
 
 .underlay {
@@ -896,8 +998,8 @@ button:disabled {
     color:inherit;
 }
 .btn.btn-dark {
-    background-color: var(--clr-ink);
-    border-color: var(--clr-ink);
+    background-color: var(--clr-grey-dark);
+    border-color: var(--clr-grey-dark);
     color: var(--clr-white-ink);
 }
 .btn.btn-light {
@@ -936,6 +1038,9 @@ button:disabled {
 .overflow-x-auto {
     overflow-x: auto;
     max-width:100%;
+}
+.overflow-clip {
+    overflow:clip;
 }
 
 .breadcrumbs li:not(:last-of-type) {
@@ -1583,6 +1688,9 @@ table.comparrison tr th {
         grid-template-columns: 1fr 1fr 1fr;
 
     }
+    .md-span-1 {
+        grid-column: span 1;
+    }
     .md-hide {
         display:none; 
         visibility:hidden;
@@ -1604,6 +1712,9 @@ table.comparrison tr th {
         display:none;
         visibility: hidden;
     }
+    .grid.sm-col-2 {
+        grid-template-columns: 1fr 1fr;
+    }
     .grid.sm-col-1 {
         grid-template-columns: 1fr;
     }
@@ -1615,11 +1726,8 @@ table.comparrison tr th {
         font-size:2rem;
         max-width: 25ch;
     }
-    footer {
-        text-align:center;
-    }
-    footer .seperator.seperator--left::after {
-        left:37.5%; width:25%
+    .x-large-text {
+        font-size:2.5rem;
     }
 
     .sm-justify-start {
@@ -1639,6 +1747,11 @@ table.comparrison tr th {
 }
 .footer__content img {
     margin-inline:auto;
+}
+
+    .footer__section--left {
+    border-right:none;
+    padding-right:0;
 }
 
 }

@@ -14,7 +14,7 @@
         <div class="grid content col-2 sm-col-1 g-6">
             <div>
                 <span class="small-text spacedish-text  heavy-weight caps fade-left-item" style="--transition-delay: .45s">{{ section.subtitle }}</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-up-item">{{ section.title }}</h3>
+                <h3 class="semilarge-text mx-auto lh-1 light-weight fade-up-item">{{ section.title }}</h3>
                 <p class="py-4 lh-2 smaller-text fade-up-item">{{ section.text }}</p>
                 <div class="grid col-2 sm-col-1 md-col-2 py-3">
                     {% set about_list = section.list_for('about-intro') %}
@@ -66,7 +66,7 @@
     <section class="section--offwhite">
         <div class="content text-center mt-3">
             <span class="small-text spacedish-text  heavy-weight caps">OUR CLIENT REVIEWS</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-left-item">What Our Clients Have To Say</h3>
+                <h3 class="semilarge-text mx-auto lh-1 light-weight fade-left-item">What Our Clients Have To Say</h3>
                 <p class="py-4 lh-2 smaller-text mx-auto fade-up-item">Don't listen to us, here's some feedback from our happy customers...</p>
                 <div class="reviews-viewbox mb-6">
                     <div class="reviews-scrollbox">
@@ -123,7 +123,7 @@
                 {% for ls in section.lists %}
                 <tr>
                     <td>
-                        <p class="w-ch50 spacedish-text heavy-weight smaller-text lh-2">{{ ls.description }}</p>
+                        <p class="w-ch50 spacedish-text light-weight smaller-text lh-2">{{ ls.description }}</p>
                     </td>
                     {% for item in ls.items %}
                     <td class="text-center py-3">

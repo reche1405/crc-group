@@ -208,11 +208,13 @@ def project_list():
 @main.route('/projects/<string:slug>/')
 def project_detail(slug):
     project = Project.get_by_slug(slug)
+    other_projects = Project.get_featured()
     if not project:
         return abort(404)
     carousel = None
     context = {
-        'project' : project
+        'project' : project,
+        'other_projects' : other_projects
     }
     if project.gallery: 
         carousel = project.gallery.to_json()

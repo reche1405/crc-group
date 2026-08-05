@@ -3,8 +3,8 @@
         <div class="footer__section footer__section--left">
             <img class="footer__logo" src="/static/img/logo.png" alt="Conservatory Roof Converters Logo">
             <p class="footer__description py-3 smaller-text lh-2">Conservatory Roof Converters is a leading provider of high-quality conservatories and garden rooms in the UK. We specialize in creating beautiful, functional spaces that enhance your home and lifestyle.</p>
-            <p class="footer__contact py-3">Email us:</p> <a href="mailto:info@theconservatoryroofconverters.co.uk">info@theconservatoryroofconverters.co.uk</a>
-            <p class="footer__contact py-3">Call us:</p> <a href="tel:+447708788901">+44 7708 788901</a>
+             <a class="small-text heavy-weight block mb-3" href="mailto:info@theconservatoryroofconverters.co.uk">info@theconservatoryroofconverters.co.uk</a>
+             <a class="small-text heavy-weight block  " href="tel:+447708788901">+44 7708 788901</a>
              <ul class="footer__socials">
                 {% for link in socials %}
                 <li>
@@ -16,35 +16,35 @@
             </ul>
         </div>
         <div class="footer__section footer__section--right">
-            <div class="grid col-3 sm-col-1 g-5">
+            <div class="grid col-3 sm-col-2 g-5">
                 <div>
-                    <h4 class="average-text heavy-weight">Quick Links</h4>
+                    <h4 class="average-text light-weight">Quick Links</h4>
                     <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
-                    <ul class="footer__links normal-weight">
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.home')}}">Home</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.about')}}">About Us</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.contact')}}">Contact</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.project_list')}}">Projects</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.article_list')}}">Blog</a></li>
+                    <ul class="footer__links normal-weight smaller-text">
+                        <li class="py-1"><a  href="{{url_for('main.home')}}">Home</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.about')}}">About Us</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.contact')}}">Contact</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.project_list')}}">Projects</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.article_list')}}">Blog</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="average-text heavy-weight">Services</h4>
+                    <h4 class="average-text light-weight">Services</h4>
                     <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
-                    <ul class="footer__links normal-weight">
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.service_list')}}">All Services</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.service_detail' , slug='conservatory-roofs')}}">Conservatories</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.service_detail' , slug='garden-rooms')}}">Garden Rooms</a></li>
-                        <li class="py-2"><a class="normal-text  " href="{{url_for('main.service_detail' , slug='interior-design')}}">CustoInterior Designs</a></li>
+                    <ul class="footer__links normal-weight smaller-text">
+                        <li class="py-1"><a  href="{{url_for('main.service_list')}}">All Services</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.service_detail' , slug='conservatory-roofs')}}">Roof Conversion</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.service_detail' , slug='garden-rooms')}}">Garden Rooms</a></li>
+                        <li class="py-1"><a  href="{{url_for('main.service_detail' , slug='interior-design')}}">Interior Design</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="average-text heavy-weight">Projects</h4>
+                    <h4 class="average-text light-weight">Projects</h4>
                     <div class="seperator seperator--highlight seperator--noline seperator--left mt-3 mb-3 "></div>
-                    <ul class="footer__links normal-weight">
-                        <li class="py-2"><a class="normal-text  " href="/projects/residential">Residential Projects</a></li>
-                        <li class="py-2"><a class="normal-text  " href="/projects/commercial">Commercial Projects</a></li>
-                        <li class="py-2"><a class="normal-text  " href="/projects/renovations">Renovation Projects</a></li>
+                    <ul class="footer__links normal-weight smaller-text">
+                        <li class="py-1"><a  href="/projects/residential">Residential Projects</a></li>
+                        <li class="py-1"><a  href="/projects/commercial">Commercial Projects</a></li>
+                        <li class="py-1"><a  href="/projects/renovations">Renovation Projects</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="flex content full-width justify-between align-center py-2">
+    <div class="flex content full-width justify-between small-text align-center py-2">
         <div class="flex g-3 justify-start">
             <a href="{{url_for('main.policy_detail', slug='privacy-policy')}}">Privacy</a> 
             <a href="{{url_for('main.policy_detail', slug='cookie-policy')}}">Cookies</a> 

@@ -14,9 +14,9 @@
         {% include "fragments/bl-slider.html"%}
     {% endblock hero %}
     {% block body %}
-    <section class="">
+    <section class="no-pad">
         {% set section=page.section('welcome-section') %}
-        <div class="grid col-3 sm-col-1 content g-3 px-3 py-6">
+        <div class="grid col-3 sm-col-1 content g-3 px-3 mt-2 pt-6">
             {% set welcome_cards = section.list_for('welcome-cards')%}
             {% for item in welcome_cards.items %}
               {% set card = item %}
@@ -34,7 +34,7 @@
             </div>
             <div class="">
                 <span class="small-text spacedish-text heavy-weight fade-up-item caps" style="--transition-delay: .45s">{{section.subtitle}}</span>
-                <h3 class="fade-left-item semilarge-text heavy-weight lh-1">{{section.title}}</h3>
+                <h3 class="fade-left-item semilarge-text spaced-text light-weight lh-1">{{section.title}}</h3>
                 <p class="py-3 w-ch60 normal-text lh-2">{{section.text}}</p>
                 <div class="grid col-2 sm-col-1 g-6 pt-3 align-end">
                     <div class="">
@@ -103,7 +103,7 @@
         {% set section=page.section('home-featured-projects') %}
         <div class="content text-center">
             <span class="small-text spacedish-text  heavy-weight fade-left-item caps" style="--transition-delay: .45s">{{ section.subtitle }}</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight fade-up-item">{{ section.title }} </h3>
+            <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text fade-up-item">{{ section.title }} </h3>
             <div class="full-width overflow-x-auto py-4">
                 <div class="flex g3 align-center g-3 py-4 justify-center sm-justify-start">
                     <button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center white-text">All ({{project_count}})</button><button class=" fg-0 fs-0 btn btn-secondary btn-md justify-center text-center disabled">Conservatories</button><button class="disabled fg-0 fs-0 btn btn-secondary btn-md justify-center text-center">Garden Rooms</button>
@@ -205,7 +205,6 @@ that protect homes and the planet</p>
                             </div>
                             <div class="tile-img fade-up-item">
                                 <img loading="lazy" src="{{ url_for('static', filename='img/tiles/composite/red-rock.jpg') }}" class="object-cover" alt="Red Rock Composite Tile" title="Red Rock">
-
                             </div>
                         </div>
 
@@ -239,7 +238,7 @@ that protect homes and the planet</p>
         {% set section = page.section("home-compatible") %}
         <div class="content text-center">
             <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight">{{ section.title  }}</h3>
+            <h3 class="semilarge-text mx-auto lh-1 light-weight spaced-text">{{ section.title  }}</h3>
         </div>
         <div class="grid col-6 md-col-3 sm-col-1 mt-3 pt-3">
             {% set con_shapes = section.list_for('con-shapes') %}

@@ -13,7 +13,7 @@
     <section>
         <div class="content grid col-3 md-col-2 sm-col-1 g-5">
             {% for service in services  %}
-            <div class="card card--light card--light-1 fade-up-item">
+            <div class="card card--light card--light-1 br-2 overflow-clip shadow-2 fade-up-item">
                 <div class="card-img--alt">
                     {% if service.featured_media %}
                     <img src="{{ service.featured_media.get_absolute_url() }}" class="object-cover" alt="{{service.title}}">
@@ -24,7 +24,7 @@
                 <div class="p-4">
                     <h4 class="fade-up-item">{{service.title}}</h4>
                     <div class="seperator seperator--darker my-3"></div>
-                    <p class="py-3">{{service.short_desc}}</p>
+                    <p class="py-3 smaller-text lh-2">{{service.short_desc}}</p>
                     <ul >
                         {% if service.intro_list %}
                         
@@ -55,7 +55,7 @@
         {% set section= page.section('services-why-us')%}
             <div class="section--dark content br-2 no-pad p-6 sm-p-3 full-width">
                 <span class="small-text spacedish-text text-center mx-auto full-width display-block mx-auto heavy-weight caps mb-2">{{ section.subtitle }}</span>
-                <h3 class="semilarge-text mx-auto lh-1 heavy-weight text-center pb-3">{{ section.title }}</h3>
+                <h3 class="semilarge-text mx-auto lh-1 light-weight text-center pb-3">{{ section.title }}</h3>
                 <p class="smaller-text spacedish text mx-auto text-center py-3">{{ section.text }}</p>
 
                 <div class="quicktabs-wrapper dark">
@@ -146,7 +146,7 @@
         {% set section = page.section('services-process')%}
         <div class="content text-center ">
             <span class="small-text spacedish-text  heavy-weight caps">{{ section.subtitle }}</span>
-            <h3 class="semilarge-text mx-auto lh-1 heavy-weight pb-3">{{ section.title }}</h3>
+            <h3 class="semilarge-text mx-auto lh-1 light-weight pb-3">{{ section.title }}</h3>
             <p class="smaller-text spacedish text mx-auto text-center py-3">{{ section.text }}</p>
         </div>
         <div class="grid content col-4 md-col-2 g-3 sm-col-1 pt-4">
