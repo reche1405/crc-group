@@ -29,7 +29,7 @@
         <div class="grid content px-3 col-2--right md-col-1 sm-col-1 py-6">
             <div class="pr-6 md-hide sm-hide">
                 <div class="poster-img fade-up-item" style="--transition-duration: 1s;">
-                    <img class="object-cover" src="{{ url_for('static', filename='img/placehold/0.jpg') }}" alt="{{section.title}}">
+                    <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/placehold/0.jpg') }}" alt="{{section.title}}">
                 </div>
             </div>
             <div class="">
@@ -85,7 +85,7 @@
                     </div>
                     <div>
                         <div class="label-img">
-                        <img class="object-cover" src="{{ url_for('static', filename='img/placehold/2.jpg') }}" alt="{{section.title}}">
+                        <img loading="lazy" class="object-cover" src="{{ url_for('static', filename='img/placehold/2.jpg') }}" alt="{{section.title}}">
 
                         </div>
                         <p class="py-4 lh-2 smaller-text">Operating since 2002, we have the knowledge required for a variety of jobs.</p>
