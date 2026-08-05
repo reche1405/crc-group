@@ -370,7 +370,7 @@ def create_url(base, relative):
 
 @main.route("/robots.txt")
 def robots():
-    content_str = """User-aagent: *
+    content_str = """User-agent: *
 Disallow: /admin/
 Disallow: /login/
 Sitemap: https://theconservatoryroofconverters.co.uk/sitemap.txt
