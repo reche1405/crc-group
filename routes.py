@@ -340,22 +340,20 @@ def sitemap():
         create_url(base_url, 'blog/'),
         
     ]
-    locations  = Location.get_all()
     policies = Policy.get_all()
     services = Service.get_all()
     projects = Project.get_all()
     articles = Article.get_all()
-    for location in locations:
-        urls.append(create_url(base_url, f"locations/{location.slug}/"))
+   
 
     for policy in policies:
         urls.append(create_url(base_url, f"legal/{policy.slug}/"))
 
     for service in services:
         urls.append(create_url(base_url, f"services/{service.slug}/"))
-        for location in locations:
+        """  for location in locations:
             urls.append(create_url(base_url, f"services/{service.slug}/{location.slug}/"))
-
+        """
     for project in projects:
         urls.append(create_url(base_url, f'projects/{project.slug}/'))
 
