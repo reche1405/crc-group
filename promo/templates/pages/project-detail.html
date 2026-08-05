@@ -139,7 +139,7 @@
                 <div class="overflow-x-auto">
                     <div class="flex g-3 py-3">
                         {% for o_project in other_projects %}
-                            <a href="" class="my-3 heavy-weight small-text fs-0">
+                            <a href="{{ o_project.get_absolute_url() }}" class="my-3 heavy-weight small-text fs-0">
                                 <div style="width:200px; height:200px; border-radius:.25rem; overflow:hidden; margin-bottom:.5rem;">
                                     {% if o_project.featured_media %}
                                     {% set thumbnail_url = o_project.featured_media.get_absolute_url() %}
